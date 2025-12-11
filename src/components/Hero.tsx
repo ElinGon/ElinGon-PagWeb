@@ -1,172 +1,165 @@
-"use client"
-
-import { Box, Container, Typography, Button, Stack } from "@mui/material"
-import RocketLaunchIcon from "@mui/icons-material/RocketLaunch"
-import { motion } from "framer-motion"
+import { Box, Container, Typography, Button, Stack } from '@mui/material';
+import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
     <Box
-      id="hero"
+      id="inicio"
       sx={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        background: "linear-gradient(135deg, #434344ff 0%, #000000ff 50%, #1b171bff 100%)",
-        position: "relative",
-        overflow: "hidden",
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        background: '#000000',
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
-      {/* Elementos de fondo animados */}
+      {/* Grid background */}
       <Box
         sx={{
-          position: "absolute",
-          width: "500px",
-          height: "500px",
-          borderRadius: "50%",
-          background: "rgba(255,255,255,0.1)",
-          top: "-250px",
-          right: "-250px",
-          animation: "float 6s ease-in-out infinite",
-          "@keyframes float": {
-            "0%, 100%": { transform: "translateY(0px)" },
-            "50%": { transform: "translateY(20px)" },
-          },
-        }}
-      />
-      <Box
-        sx={{
-          position: "absolute",
-          width: "300px",
-          height: "300px",
-          borderRadius: "50%",
-          background: "rgba(255,255,255,0.05)",
-          bottom: "-150px",
-          left: "-150px",
-          animation: "float 8s ease-in-out infinite",
+          position: 'absolute',
+          width: '100%',
+          height: '100%',
+          backgroundImage: `
+            linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px',
+          opacity: 0.5,
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-        <Stack spacing={4} alignItems="center" textAlign="center">
+      {/* Gradiente sutil */}
+      <Box
+        sx={{
+          position: 'absolute',
+          width: '600px',
+          height: '600px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%)',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          filter: 'blur(60px)',
+        }}
+      />
+
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+        <Stack spacing={6} alignItems="center" textAlign="center">
           <motion.div
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ duration: 0.8, type: "spring" }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: 'easeOut' }}
           >
-            <Box
+            <Typography
               sx={{
-                p: 3,
-                borderRadius: "50%",
-                background: "rgba(255,255,255,0.2)",
-                backdropFilter: "blur(10px)",
-                display: "inline-block",
+                fontSize: { xs: '0.875rem', md: '1rem' },
+                color: 'rgba(255, 255, 255, 0.5)',
+                letterSpacing: '0.2em',
+                fontWeight: 300,
+                mb: 2,
               }}
             >
-              <RocketLaunchIcon sx={{ fontSize: 80, color: "white" }} />
-            </Box>
+              DESARROLLO DE SOFTWARE
+            </Typography>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
           >
             <Typography
               variant="h1"
               sx={{
-                fontSize: { xs: "2.5rem", md: "5rem" },
-                color: "white",
-                textShadow: "0 4px 20px rgba(0,0,0,0.3)",
-                background: "linear-gradient(to right, #fff, #f0f0f0)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
+                fontSize: { xs: '3rem', md: '6rem' },
+                color: 'white',
+                fontWeight: 300,
+                lineHeight: 1.1,
+                mb: 3,
               }}
             >
-              Innovación Digital
+             
+              Tech
             </Typography>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 1, delay: 0.4, ease: 'easeOut' }}
           >
             <Typography
-              variant="h5"
+              variant="h6"
               sx={{
-                maxWidth: "800px",
-                color: "rgba(255,255,255,0.95)",
-                fontWeight: 400,
-                lineHeight: 1.6,
+                maxWidth: '600px',
+                color: 'rgba(255, 255, 255, 0.6)',
+                fontWeight: 300,
+                lineHeight: 1.8,
+                fontSize: { xs: '1rem', md: '1.25rem' },
               }}
             >
-              Transformamos tus ideas en experiencias digitales extraordinarias con tecnología de vanguardia y diseño
-              excepcional
+              Creamos experiencias digitales excepcionales
+              <br />
+              con código limpio y diseño elegante
             </Typography>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.6, ease: 'easeOut' }}
           >
-            <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
-              <Button
-                variant="contained"
-                size="large"
-                sx={{
-                  bgcolor: "white",
-                  color: "primary.main",
-                  px: 5,
-                  py: 2,
-                  fontSize: "1.1rem",
-                  fontWeight: 600,
-                  borderRadius: "50px",
-                  boxShadow: "0 8px 30px rgba(255,255,255,0.3)",
-                  "&:hover": {
-                    bgcolor: "grey.100",
-                    transform: "translateY(-2px)",
-                    boxShadow: "0 12px 40px rgba(255,255,255,0.4)",
-                  },
-                  transition: "all 0.3s ease",
-                }}
-                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              >
-                Comenzar Proyecto
-              </Button>
-
+            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3} sx={{ mt: 4 }}>
               <Button
                 variant="outlined"
                 size="large"
                 sx={{
-                  borderColor: "white",
-                  color: "white",
-                  px: 5,
+                  borderColor: 'white',
+                  color: 'white',
+                  px: 6,
                   py: 2,
-                  fontSize: "1.1rem",
-                  fontWeight: 600,
-                  borderRadius: "50px",
-                  borderWidth: "2px",
-                  "&:hover": {
-                    borderColor: "white",
-                    bgcolor: "rgba(255,255,255,0.1)",
-                    borderWidth: "2px",
-                    transform: "translateY(-2px)",
+                  fontSize: '0.875rem',
+                  fontWeight: 300,
+                  letterSpacing: '0.1em',
+                  borderRadius: 0,
+                  '&:hover': {
+                    borderColor: 'white',
+                    bgcolor: 'white',
+                    color: 'black',
                   },
-                  transition: "all 0.3s ease",
+                  transition: 'all 0.3s ease',
                 }}
-                onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Explorar Servicios
+                EMPEZAR PROYECTO
+              </Button>
+
+              <Button
+                size="large"
+                sx={{
+                  color: 'rgba(255, 255, 255, 0.7)',
+                  px: 6,
+                  py: 2,
+                  fontSize: '0.875rem',
+                  fontWeight: 300,
+                  letterSpacing: '0.1em',
+                  '&:hover': {
+                    color: 'white',
+                    bgcolor: 'transparent',
+                  },
+                  transition: 'all 0.3s ease',
+                }}
+                onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                EXPLORAR →
               </Button>
             </Stack>
           </motion.div>
         </Stack>
       </Container>
     </Box>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

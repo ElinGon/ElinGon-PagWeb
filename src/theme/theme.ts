@@ -1,44 +1,34 @@
-import { createTheme } from "@mui/material/styles"
+import { createTheme } from '@mui/material/styles';
 
 export const theme = createTheme({
   palette: {
+    mode: 'dark',
     primary: {
-      main: "#000000ff", // Indigo moderno
-      light: "#ffffffff",
-      dark: "#000000ff",
+      main: '#ffffff',
+      light: '#ffffff',
+      dark: '#e5e5e5',
     },
     secondary: {
-      main: "#ec4899", // Pink vibrante
-      light: "#f472b6",
-      dark: "#db2777",
+      main: '#000000',
     },
     background: {
-      default: "#060607ff", // Dark blue
-      paper: "#1e293b",
+      default: '#000000',
+      paper: 'rgba(255, 255, 255, 0.05)',
     },
     text: {
-      primary: "#f1f5f9",
-      secondary: "#cbd5e1",
+      primary: '#ffffff',
+      secondary: 'rgba(255, 255, 255, 0.7)',
     },
   },
   typography: {
-    fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Inter", "Helvetica", "Arial", sans-serif',
     h1: {
-      fontWeight: 800,
-      letterSpacing: "-0.02em",
+      fontWeight: 300,
+      letterSpacing: '-0.02em',
     },
     h2: {
-      fontWeight: 700,
-      letterSpacing: "-0.01em",
+      fontWeight: 300,
+      letterSpacing: '-0.01em',
     },
   },
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: {
-        body: {
-          background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
-        },
-      },
-    },
-  },
-})
+});

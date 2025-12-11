@@ -5,81 +5,173 @@ import CloudIcon from '@mui/icons-material/Cloud';
 import ApiIcon from '@mui/icons-material/Api';
 import StorageIcon from '@mui/icons-material/Storage';
 import SecurityIcon from '@mui/icons-material/Security';
+import { motion } from 'framer-motion';
 
 const services = [
   {
     icon: <WebIcon sx={{ fontSize: 50 }} />,
     title: 'Desarrollo Web',
-    description: 'Creamos aplicaciones web modernas, responsivas y escalables con las últimas tecnologías.',
+    description: 'Aplicaciones web modernas con React, Next.js y las últimas tecnologías.',
+    gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
   },
   {
     icon: <PhoneAndroidIcon sx={{ fontSize: 50 }} />,
-    title: 'Aplicaciones Móviles',
-    description: 'Desarrollo de apps nativas y multiplataforma para iOS y Android.',
+    title: 'Apps Móviles',
+    description: 'Desarrollo nativo y multiplataforma para iOS y Android.',
+    gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
   },
   {
     icon: <CloudIcon sx={{ fontSize: 50 }} />,
-    title: 'Soluciones Cloud',
-    description: 'Migración y optimización de infraestructura en la nube (AWS, Azure, GCP).',
+    title: 'Cloud Solutions',
+    description: 'Infraestructura escalable en AWS, Azure y Google Cloud.',
+    gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
   },
   {
     icon: <ApiIcon sx={{ fontSize: 50 }} />,
-    title: 'APIs & Microservicios',
-    description: 'Diseño e implementación de arquitecturas escalables y APIs RESTful.',
+    title: 'APIs & Backend',
+    description: 'Arquitecturas robustas con Node.js, Python y microservicios.',
+    gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
   },
   {
     icon: <StorageIcon sx={{ fontSize: 50 }} />,
-    title: 'Base de Datos',
-    description: 'Diseño, optimización y administración de bases de datos SQL y NoSQL.',
+    title: 'Big Data & AI',
+    description: 'Machine Learning, análisis de datos y automatización inteligente.',
+    gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
   },
   {
     icon: <SecurityIcon sx={{ fontSize: 50 }} />,
     title: 'Ciberseguridad',
-    description: 'Auditorías de seguridad y implementación de mejores prácticas.',
+    description: 'Protección avanzada y auditorías de seguridad empresarial.',
+    gradient: 'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
   },
 ];
 
 const Services = () => {
   return (
-    <Box id="services" sx={{ py: 10, bgcolor: 'background.default' }}>
-      <Container maxWidth="lg">
-        <Stack spacing={6}>
-          <Box textAlign="center">
-            <Typography variant="h2" gutterBottom>
-              Nuestros Servicios
-            </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ maxWidth: '700px', mx: 'auto' }}>
-              Ofrecemos soluciones tecnológicas integrales para llevar tu negocio al siguiente nivel
-            </Typography>
-          </Box>
+    <Box
+      id="servicios"
+      sx={{
+        py: 12,
+        background: 'linear-gradient(180deg, #0f172a 0%, #1e293b 100%)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Elementos de fondo */}
+      <Box
+        sx={{
+          position: 'absolute',
+          width: '600px',
+          height: '600px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%)',
+          top: '-300px',
+          left: '-300px',
+        }}
+      />
+      <Box
+        sx={{
+          position: 'absolute',
+          width: '400px',
+          height: '400px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%)',
+          bottom: '-200px',
+          right: '-200px',
+        }}
+      />
+
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+        <Stack spacing={8}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Box textAlign="center">
+              <Typography
+                variant="h2"
+                sx={{
+                  color: 'white',
+                  mb: 2,
+                  fontWeight: 800,
+                  fontSize: { xs: '2.5rem', md: '3.5rem' },
+                }}
+              >
+                Servicios Premium
+              </Typography>
+              <Typography
+                variant="h6"
+                sx={{
+                  color: 'rgba(255, 255, 255, 0.7)',
+                  maxWidth: '700px',
+                  mx: 'auto',
+                }}
+              >
+                Soluciones tecnológicas que impulsan el crecimiento de tu negocio
+              </Typography>
+            </Box>
+          </motion.div>
 
           <Grid container spacing={4}>
             {services.map((service, index) => (
               <Grid key={index}>
-                <Card
-                  sx={{
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    transition: 'transform 0.3s, box-shadow 0.3s',
-                    '&:hover': {
-                      transform: 'translateY(-8px)',
-                      boxShadow: 6,
-                    },
-                  }}
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -10 }}
                 >
-                  <CardContent sx={{ flexGrow: 1, textAlign: 'center', p: 4 }}>
-                    <Box sx={{ color: 'primary.main', mb: 2 }}>
-                      {service.icon}
-                    </Box>
-                    <Typography variant="h5" gutterBottom fontWeight={600}>
-                      {service.title}
-                    </Typography>
-                    <Typography variant="body1" color="text.secondary">
-                      {service.description}
-                    </Typography>
-                  </CardContent>
-                </Card>
+                  <Card
+                    sx={{
+                      height: '100%',
+                      background: 'rgba(30, 41, 59, 0.5)',
+                      backdropFilter: 'blur(10px)',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      borderRadius: 4,
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        border: '1px solid rgba(255, 255, 255, 0.3)',
+                        boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
+                        '& .service-icon': {
+                          transform: 'scale(1.1) rotate(5deg)',
+                        },
+                      },
+                    }}
+                  >
+                    <CardContent sx={{ p: 4, textAlign: 'center' }}>
+                      <Box
+                        className="service-icon"
+                        sx={{
+                          background: service.gradient,
+                          width: 80,
+                          height: 80,
+                          borderRadius: 3,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          mx: 'auto',
+                          mb: 3,
+                          color: 'white',
+                          transition: 'transform 0.3s ease',
+                        }}
+                      >
+                        {service.icon}
+                      </Box>
+                      <Typography
+                        variant="h5"
+                        sx={{ color: 'white', fontWeight: 700, mb: 2 }}
+                      >
+                        {service.title}
+                      </Typography>
+                      <Typography sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+                        {service.description}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               </Grid>
             ))}
           </Grid>
