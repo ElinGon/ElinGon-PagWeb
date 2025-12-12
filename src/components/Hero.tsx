@@ -36,7 +36,7 @@ const Hero = () => {
           width: '600px',
           height: '600px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%)',
+          background: '#000000ff',
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
@@ -51,17 +51,6 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: 'easeOut' }}
           >
-            <Typography
-              sx={{
-                fontSize: { xs: '0.875rem', md: '1rem' },
-                color: 'rgba(255, 255, 255, 0.5)',
-                letterSpacing: '0.2em',
-                fontWeight: 300,
-                mb: 2,
-              }}
-            >
-              DESARROLLO DE SOFTWARE
-            </Typography>
           </motion.div>
 
           <motion.div
@@ -69,18 +58,30 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
           >
-            <Typography
-              variant="h1"
+
+            <Box
+              component="img"
+              src="/public/elingon.png"
+              alt="ElinGon Logo"
               sx={{
-                fontSize: { xs: '3rem', md: '6rem' },
-                color: 'white',
-                fontWeight: 300,
-                lineHeight: 1.1,
-                mb: 3,
+                width: { xs: '120px', sm: '160px', md: '290px', lg: '220px' },
+                height: 'auto',
+                maxWidth: '100%',
+              }}
+            />
+
+            <Typography
+              variant="h6"
+              sx={{
+                marginTop: '10%',
+                maxWidth: '800px',
+                color: 'rgba(255, 255, 255, 0.6)',
+                fontWeight: 500,
+                lineHeight: 1.8,
+                fontSize: { xs: '1.2rem', md: '1.2rem' },
               }}
             >
-             
-              Tech
+              Práctico, Profesional y Personalizado
             </Typography>
           </motion.div>
 

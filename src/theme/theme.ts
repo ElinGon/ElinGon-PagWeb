@@ -1,10 +1,12 @@
 import { createTheme } from '@mui/material/styles';
 
 export const theme = createTheme({
+
+  
   palette: {
     mode: 'dark',
     primary: {
-      main: '#ffffff',
+      main: '#ffffffff',
       light: '#ffffff',
       dark: '#e5e5e5',
     },
@@ -21,7 +23,7 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Inter", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Roboto Flex", "Inter", "Helvetica", "Arial", sans-serif',
     h1: {
       fontWeight: 300,
       letterSpacing: '-0.02em',

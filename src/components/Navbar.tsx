@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography, Button, Box, Container } from '@mui/material';
+import { AppBar, Toolbar, Button, Box, Container } from '@mui/material';
 import { motion } from 'framer-motion';
 
 const Navbar = () => {
@@ -9,34 +9,14 @@ const Navbar = () => {
 
   return (
     <AppBar
-      position="sticky"
-      elevation={0}
-      sx={{
-        background: 'rgba(0, 0, 0, 0.6)',
-        backdropFilter: 'blur(20px)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+        sx={{
+        background: 'rgba(0, 0, 0, 0.34)',
+        backdropFilter: 'blur(15px)',
+        boxShadow: "#161616ff 0px 4px 25px",
       }}
     >
-      <Container maxWidth="lg">
-        <Toolbar disableGutters sx={{ py: 2 }}>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            style={{ flexGrow: 1 }}
-          >
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: 300,
-                fontSize: '1.2rem',
-                letterSpacing: '0.1em',
-                color: 'white',
-              }}
-            >
-              TECHSOLUTIONS
-            </Typography>
-          </motion.div>
+      <Container >
+        <Toolbar >
 
           <Box sx={{ display: 'flex', gap: 4 }}>
             {['INICIO', 'SERVICIOS', 'NOSOTROS', 'CONTACTO'].map((item, index) => (

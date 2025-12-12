@@ -1,10 +1,6 @@
 import { Box, Container, Typography, Grid, Card, CardContent, Stack } from '@mui/material';
 import WebIcon from '@mui/icons-material/Web';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
-import CloudIcon from '@mui/icons-material/Cloud';
-import ApiIcon from '@mui/icons-material/Api';
-import StorageIcon from '@mui/icons-material/Storage';
-import SecurityIcon from '@mui/icons-material/Security';
 import { motion } from 'framer-motion';
 
 const services = [
@@ -12,38 +8,15 @@ const services = [
     icon: <WebIcon sx={{ fontSize: 50 }} />,
     title: 'Desarrollo Web',
     description: 'Aplicaciones web modernas con React, Next.js y las últimas tecnologías.',
-    gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    gradient: 'linear-gradient(135deg, #000000ff 0%, #000000ff 100%)',
   },
   {
     icon: <PhoneAndroidIcon sx={{ fontSize: 50 }} />,
     title: 'Apps Móviles',
     description: 'Desarrollo nativo y multiplataforma para iOS y Android.',
-    gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+    gradient: 'linear-gradient(135deg, #000000ff 0%, #000000ff 100%)',
   },
-  {
-    icon: <CloudIcon sx={{ fontSize: 50 }} />,
-    title: 'Cloud Solutions',
-    description: 'Infraestructura escalable en AWS, Azure y Google Cloud.',
-    gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-  },
-  {
-    icon: <ApiIcon sx={{ fontSize: 50 }} />,
-    title: 'APIs & Backend',
-    description: 'Arquitecturas robustas con Node.js, Python y microservicios.',
-    gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-  },
-  {
-    icon: <StorageIcon sx={{ fontSize: 50 }} />,
-    title: 'Big Data & AI',
-    description: 'Machine Learning, análisis de datos y automatización inteligente.',
-    gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-  },
-  {
-    icon: <SecurityIcon sx={{ fontSize: 50 }} />,
-    title: 'Ciberseguridad',
-    description: 'Protección avanzada y auditorías de seguridad empresarial.',
-    gradient: 'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
-  },
+
 ];
 
 const Services = () => {
@@ -52,7 +25,7 @@ const Services = () => {
       id="servicios"
       sx={{
         py: 12,
-        background: 'linear-gradient(180deg, #0f172a 0%, #1e293b 100%)',
+        background: '#000000ff',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -75,7 +48,7 @@ const Services = () => {
           width: '400px',
           height: '400px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%)',
+          background: '#0000',
           bottom: '-200px',
           right: '-200px',
         }}
@@ -91,15 +64,16 @@ const Services = () => {
           >
             <Box textAlign="center">
               <Typography
-                variant="h2"
+                variant="h1"
                 sx={{
+                  fontSize: { xs: '1rem', md: '5rem' },
                   color: 'white',
-                  mb: 2,
-                  fontWeight: 800,
-                  fontSize: { xs: '2.5rem', md: '3.5rem' },
+                  fontWeight: 300,
+                  lineHeight: 1.1,
+                  mb: 3,
                 }}
               >
-                Servicios Premium
+                Servicios 
               </Typography>
               <Typography
                 variant="h6"

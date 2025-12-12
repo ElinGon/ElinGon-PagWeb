@@ -7,7 +7,7 @@ import CodeIcon from '@mui/icons-material/Code';
 
 const Footer = () => {
   return (
-    <Box sx={{ bgcolor: 'primary.main', color: 'white', py: 6 }}>
+    <Box sx={{ bgcolor: 'primary.main', background:'black',color: 'white', py: 6 }}>
       <Container maxWidth="lg">
         <Stack spacing={4}>
           <Box display="flex" alignItems="center" justifyContent="center" gap={1}>
