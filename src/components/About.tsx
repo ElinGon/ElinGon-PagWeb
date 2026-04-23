@@ -4,6 +4,9 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import WorkIcon from '@mui/icons-material/Work';
 import { motion } from 'framer-motion';
 
+const notebookLandscapeQuery =
+  '@media (min-width: 1024px) and (max-width: 1600px) and (max-height: 950px)';
+
 const stats = [
   { icon: <WorkIcon sx={{ fontSize: 40 }} />, number: '150+', label: 'Proyectos Completados' },
   { icon: <GroupsIcon sx={{ fontSize: 40 }} />, number: '50+', label: 'Clientes Satisfechos' },
@@ -15,17 +18,29 @@ const About = () => {
     <Box
       id="nosotros"
       sx={{
-        minHeight: { md: '100svh' },
         py: { xs: 7, sm: 8, md: 8 },
         bgcolor: 'background.default',
         scrollMarginTop: { xs: 64, md: 72 },
-        display: { md: 'flex' },
-        alignItems: { md: 'center' },
+        '@media (min-width: 1024px) and (orientation: landscape)': {
+          minHeight: 'clamp(620px, calc(100svh - 72px), 860px)',
+          display: 'flex',
+          alignItems: 'center',
+          py: 5,
+        },
+        [notebookLandscapeQuery]: {
+          py: 4,
+        },
       }}
     >
       <Container
         maxWidth="xl"
-        sx={{ px: { xs: 2.5, sm: 4, lg: 7, xl: 9 } }}
+        sx={{
+          px: { xs: 2.5, sm: 4, lg: 7, xl: 9 },
+          width: '100%',
+          [notebookLandscapeQuery]: {
+            px: 5,
+          },
+        }}
       >
         <Grid container spacing={{ xs: 5, md: 8, xl: 12 }} alignItems="center">
           <Grid size={{ xs: 12, md: 6 }}>
@@ -35,7 +50,12 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, ease: 'easeOut' }}
               viewport={{ once: true, amount: 0.3 }}
-              spacing={3}
+              spacing={{ xs: 3, xl: 3.5 }}
+              sx={{
+                [notebookLandscapeQuery]: {
+                  spacing: 2.2,
+                },
+              }}
             >
               <Typography
                 variant="overline"
@@ -48,6 +68,9 @@ const About = () => {
                 sx={{
                   color: 'text.primary',
                   fontSize: { xs: '2.15rem', md: '3.8rem', lg: '4.35rem', xl: '5rem' },
+                  [notebookLandscapeQuery]: {
+                    fontSize: '3.15rem',
+                  },
                 }}
               >
                 Cercanía de estudio, calidad de software serio
@@ -57,6 +80,11 @@ const About = () => {
                 color="text.secondary"
                 fontSize={{ xs: 18, xl: 21 }}
                 lineHeight={1.8}
+                sx={{
+                  [notebookLandscapeQuery]: {
+                    fontSize: '1rem',
+                  },
+                }}
               >
                 Somos un equipo apasionado de desarrolladores, diseñadores y estrategas
                 digitales comprometidos con la excelencia tecnológica.
@@ -66,6 +94,11 @@ const About = () => {
                 color="text.secondary"
                 fontSize={{ xs: 18, xl: 21 }}
                 lineHeight={1.8}
+                sx={{
+                  [notebookLandscapeQuery]: {
+                    fontSize: '1rem',
+                  },
+                }}
               >
                 Desde 2014, hemos ayudado a empresas de todos los tamaños a transformar
                 sus ideas en soluciones digitales exitosas. Nuestra experiencia abarca
@@ -76,6 +109,11 @@ const About = () => {
                 color="text.secondary"
                 fontSize={{ xs: 18, xl: 21 }}
                 lineHeight={1.8}
+                sx={{
+                  [notebookLandscapeQuery]: {
+                    fontSize: '1rem',
+                  },
+                }}
               >
                 Creemos en la innovación constante, la calidad del código y en construir
                 relaciones duraderas con nuestros clientes.
@@ -83,7 +121,7 @@ const About = () => {
             </Stack>
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
-            <Grid container spacing={2.5}>
+            <Grid container spacing={{ xs: 2.5, xl: 3 }}>
               {stats.map((stat, index) => (
                 <Grid key={index} size={{ xs: 12, sm: 4, md: 12 }}>
                   <Paper
@@ -105,6 +143,9 @@ const About = () => {
                       '&:hover': {
                         borderColor: 'rgba(246, 198, 91, 0.42)',
                       },
+                      [notebookLandscapeQuery]: {
+                        p: 2.8,
+                      },
                     }}
                   >
                     <Box sx={{ color: 'primary.main', display: 'flex' }}>
@@ -115,14 +156,24 @@ const About = () => {
                         variant="h3"
                         color="text.primary"
                         fontWeight={750}
-                        sx={{ fontSize: { xl: '4rem' } }}
+                        sx={{
+                          fontSize: { xl: '4rem' },
+                          [notebookLandscapeQuery]: {
+                            fontSize: '2.6rem',
+                          },
+                        }}
                       >
                         {stat.number}
                       </Typography>
                       <Typography
                         variant="body1"
                         color="text.secondary"
-                        sx={{ fontSize: { xl: '1.18rem' } }}
+                        sx={{
+                          fontSize: { xl: '1.18rem' },
+                          [notebookLandscapeQuery]: {
+                            fontSize: '0.98rem',
+                          },
+                        }}
                       >
                         {stat.label}
                       </Typography>

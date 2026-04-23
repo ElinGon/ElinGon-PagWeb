@@ -30,19 +30,28 @@ const cardVariants = {
   show: { opacity: 1, y: 0, scale: 1 },
 };
 
+const notebookLandscapeQuery =
+  '@media (min-width: 1024px) and (max-width: 1600px) and (max-height: 950px)';
+
 const Services = () => {
   return (
     <Box
       id="servicios"
       sx={{
-        minHeight: { md: '100svh' },
         py: { xs: 7, sm: 8, md: 8 },
         background: '#10151a',
         position: 'relative',
         overflow: 'hidden',
         scrollMarginTop: { xs: 64, md: 72 },
-        display: { md: 'flex' },
-        alignItems: { md: 'center' },
+        '@media (min-width: 1024px) and (orientation: landscape)': {
+          minHeight: 'clamp(620px, calc(100svh - 72px), 860px)',
+          display: 'flex',
+          alignItems: 'center',
+          py: 5,
+        },
+        [notebookLandscapeQuery]: {
+          py: 4,
+        },
       }}
     >
       <Box
@@ -60,9 +69,23 @@ const Services = () => {
           position: 'relative',
           zIndex: 1,
           px: { xs: 2.5, sm: 4, lg: 7, xl: 9 },
+          width: '100%',
+          [notebookLandscapeQuery]: {
+            px: 5,
+          },
         }}
       >
-        <Stack spacing={{ xs: 4, md: 5, xl: 7 }}>
+        <Stack
+          spacing={{ xs: 4, md: 5, xl: 7 }}
+          sx={{
+            '@media (min-width: 1024px) and (orientation: landscape)': {
+              width: '100%',
+            },
+            [notebookLandscapeQuery]: {
+              spacing: 3.5,
+            },
+          }}
+        >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -97,6 +120,9 @@ const Services = () => {
                   },
                   color: 'text.primary',
                   mb: 2,
+                  [notebookLandscapeQuery]: {
+                    fontSize: '3.35rem',
+                  },
                 }}
               >
                 Servicios digitales con foco en resultado
@@ -109,6 +135,10 @@ const Services = () => {
                   mx: 'auto',
                   fontWeight: 360,
                   fontSize: { xs: '1rem', md: '1.25rem', xl: '1.45rem' },
+                  [notebookLandscapeQuery]: {
+                    maxWidth: '760px',
+                    fontSize: '1.08rem',
+                  },
                 }}
               >
                 Diseñamos, construimos y acompañamos soluciones tecnológicas que se sienten simples por fuera y sólidas por dentro.
@@ -116,7 +146,7 @@ const Services = () => {
             </Box>
           </motion.div>
 
-          <Grid container spacing={3}>
+          <Grid container spacing={{ xs: 3, xl: 4 }}>
             {services.map((service, index) => (
               <Grid key={index} size={{ xs: 12, md: 4 }} sx={{ display: 'flex' }}>
                 <motion.div
@@ -159,6 +189,9 @@ const Services = () => {
                           transform: 'translateX(6px) rotate(-3deg)',
                         },
                       },
+                      [notebookLandscapeQuery]: {
+                        minHeight: 300,
+                      },
                     }}
                   >
                     <CardContent
@@ -169,6 +202,9 @@ const Services = () => {
                         display: 'flex',
                         flexDirection: 'column',
                         width: '100%',
+                        [notebookLandscapeQuery]: {
+                          p: 3.5,
+                        },
                       }}
                     >
                       <Chip
@@ -198,6 +234,11 @@ const Services = () => {
                           mb: 3,
                           color: 'primary.light',
                           transition: 'color 0.3s ease, transform 0.3s ease',
+                          [notebookLandscapeQuery]: {
+                            width: 62,
+                            height: 62,
+                            mb: 2,
+                          },
                         }}
                       >
                         {service.icon}
@@ -209,6 +250,9 @@ const Services = () => {
                           mb: 2,
                           mt: 'auto',
                           fontSize: { lg: '1.7rem', xl: '2rem' },
+                          [notebookLandscapeQuery]: {
+                            fontSize: '1.5rem',
+                          },
                         }}
                       >
                         {service.title}
@@ -219,6 +263,10 @@ const Services = () => {
                           lineHeight: 1.7,
                           minHeight: { md: 82, xl: 96 },
                           fontSize: { lg: '1.05rem', xl: '1.22rem' },
+                          [notebookLandscapeQuery]: {
+                            minHeight: 0,
+                            fontSize: '1rem',
+                          },
                         }}
                       >
                         {service.description}

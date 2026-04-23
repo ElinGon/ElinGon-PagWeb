@@ -16,13 +16,17 @@ const Hero = () => {
         minHeight: '100svh',
         display: 'flex',
         alignItems: 'center',
-        pt: { xs: 8, sm: 9, md: 10 },
-        pb: { xs: 4, md: 5 },
+        pt: { xs: '84px', sm: '92px', md: '104px' },
+        pb: { xs: '28px', md: '36px' },
         background:
           'linear-gradient(135deg, #0b0f13 0%, #141a1f 48%, #1c232a 100%)',
         position: 'relative',
         overflow: 'hidden',
         boxSizing: 'border-box',
+        '@media (max-height: 860px)': {
+          pt: { xs: '80px', sm: '88px', md: '96px' },
+          pb: { xs: '20px', md: '24px' },
+        },
       }}
     >
       <Box
@@ -105,17 +109,32 @@ const Hero = () => {
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: 'relative',
+          zIndex: 1,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: { xs: 'calc(100svh - 112px)', md: 'calc(100svh - 140px)' },
+          '@media (max-height: 860px)': {
+            minHeight: { xs: 'calc(100svh - 100px)', md: 'calc(100svh - 120px)' },
+          },
+        }}
+      >
         <Stack
-          spacing={{ xs: 2.6, sm: 3.2, md: 3.8 }}
+          spacing={{ xs: 2.2, sm: 2.6, md: 3.1 }}
           alignItems="center"
           textAlign="center"
           sx={{
+            width: '100%',
+            maxWidth: 1080,
             '@media (max-height: 760px)': {
-              transform: 'scale(0.9)',
+              transform: 'scale(0.92)',
             },
             '@media (max-height: 650px)': {
-              transform: 'scale(0.82)',
+              transform: 'scale(0.84)',
             },
           }}
         >
@@ -130,7 +149,7 @@ const Hero = () => {
                 src="/elingon.png"
                 alt="ElinGon Logo"
                 sx={{
-                  width: { xs: 128, sm: 164, md: 200 },
+                  width: { xs: 124, sm: 150, md: 180, lg: 190 },
                   height: 'auto',
                   maxWidth: '100%',
                   objectFit: 'contain',
@@ -143,10 +162,10 @@ const Hero = () => {
               variant="overline"
               sx={{
                 display: 'block',
-                mt: { xs: 1.8, md: 2.2 },
+                mt: { xs: 1.4, md: 1.8 },
                 color: 'primary.light',
                 fontWeight: 800,
-                fontSize: { xs: '0.74rem', md: '0.82rem' },
+                fontSize: { xs: '0.72rem', md: '0.78rem' },
                 letterSpacing: '0.16em',
               }}
             >
@@ -166,9 +185,10 @@ const Hero = () => {
                 color: 'text.primary',
                 fontSize: {
                   xs: 'clamp(2rem, 10vw, 2.85rem)',
-                  sm: 'clamp(3rem, 8vw, 4rem)',
-                  md: 'clamp(4.6rem, 6.4vw, 5.8rem)',
+                  sm: 'clamp(2.8rem, 7vw, 3.8rem)',
+                  md: 'clamp(3.8rem, 5.8vw, 5rem)',
                 },
+                lineHeight: { xs: 1.02, md: 0.98 },
               }}
             >
               Software claro para negocios que quieren{' '}
@@ -187,11 +207,11 @@ const Hero = () => {
               sx={{
                 maxWidth: '720px',
                 mx: 'auto',
-                mt: { xs: 1.6, md: 2.2 },
+                mt: { xs: 1.1, md: 1.6 },
                 color: 'text.secondary',
                 fontWeight: 360,
                 lineHeight: 1.65,
-                fontSize: { xs: '0.95rem', md: '1.15rem' },
+                fontSize: { xs: '0.95rem', md: '1.05rem', lg: '1.1rem' },
               }}
             >
               Creamos sitios, apps y sistemas a medida con diseño cuidado,
@@ -207,7 +227,7 @@ const Hero = () => {
             <Stack
               direction={{ xs: 'column', sm: 'row' }}
               spacing={2}
-              sx={{ mt: { xs: 0, md: 0.5 }, width: { xs: '100%', sm: 'auto' } }}
+              sx={{ mt: { xs: 0.2, md: 0.4 }, width: { xs: '100%', sm: 'auto' } }}
             >
               <Button
                 component={motion.button}
@@ -263,7 +283,7 @@ const Hero = () => {
               height: 34,
               border: '1px solid rgba(255,255,255,0.28)',
               borderRadius: 99,
-              display: { xs: 'none', md: 'flex' },
+              display: { xs: 'none', lg: 'flex' },
               alignItems: 'flex-start',
               justifyContent: 'center',
               p: '6px',

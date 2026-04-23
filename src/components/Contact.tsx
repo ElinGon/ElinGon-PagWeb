@@ -5,6 +5,12 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
+const notebookLandscapeQuery =
+  '@media (min-width: 1024px) and (max-width: 1600px) and (max-height: 950px)';
+
+const compactNotebookQuery =
+  '@media (min-width: 1024px) and (max-width: 1536px) and (max-height: 860px)';
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -44,20 +50,43 @@ const Contact = () => {
     <Box
       id="contacto"
       sx={{
-        minHeight: { md: '100svh' },
         py: { xs: 7, sm: 8, md: 8 },
         bgcolor: '#10151a',
         borderTop: '1px solid rgba(202, 205, 208, 0.1)',
         scrollMarginTop: { xs: 64, md: 72 },
-        display: { md: 'flex' },
-        alignItems: { md: 'center' },
+        '@media (min-width: 1024px) and (orientation: landscape)': {
+          minHeight: 'clamp(620px, calc(100svh - 72px), 860px)',
+          display: 'flex',
+          alignItems: 'center',
+          py: 5,
+        },
+        [notebookLandscapeQuery]: {
+          py: 4,
+        },
+        [compactNotebookQuery]: {
+          minHeight: 'auto',
+          py: 3.5,
+        },
       }}
     >
       <Container
         maxWidth="xl"
-        sx={{ px: { xs: 2.5, sm: 4, lg: 7, xl: 9 } }}
+        sx={{
+          px: { xs: 2.5, sm: 4, lg: 7, xl: 9 },
+          width: '100%',
+          [notebookLandscapeQuery]: {
+            px: 5,
+          },
+        }}
       >
-        <Stack spacing={{ xs: 4, md: 5, xl: 7 }}>
+        <Stack
+          spacing={{ xs: 4, md: 5, xl: 7 }}
+          sx={{
+            [compactNotebookQuery]: {
+              spacing: 3,
+            },
+          }}
+        >
           <Box textAlign="center">
             <Box
               component={motion.div}
@@ -71,6 +100,13 @@ const Contact = () => {
                 sx={{
                   fontSize: { xs: '2.15rem', md: '4rem', lg: '4.6rem', xl: '5.25rem' },
                   mb: 2,
+                  [notebookLandscapeQuery]: {
+                    fontSize: '3.2rem',
+                  },
+                  [compactNotebookQuery]: {
+                    fontSize: '2.7rem',
+                    mb: 1,
+                  },
                 }}
               >
                 Hablemos de tu próximo proyecto
@@ -79,19 +115,45 @@ const Contact = () => {
                 variant="h6"
                 color="text.secondary"
                 fontWeight={360}
-                sx={{ fontSize: { xl: '1.45rem' } }}
+                sx={{
+                  fontSize: { xl: '1.45rem' },
+                  [notebookLandscapeQuery]: {
+                    fontSize: '1.02rem',
+                  },
+                  [compactNotebookQuery]: {
+                    fontSize: '0.95rem',
+                  },
+                }}
               >
                 ¿Tienes un proyecto en mente? Nos encantaría escucharte
               </Typography>
             </Box>
           </Box>
 
-          <Grid container spacing={3.5} alignItems="stretch">
-            <Grid size={{ xs: 12, md: 4 }} sx={{ display: 'flex' }}>
-              <Stack spacing={3} sx={{ width: '100%', height: '100%' }}>
+          <Grid
+            container
+            spacing={{ xs: 3.5, xl: 4 }}
+            alignItems="stretch"
+            sx={{
+              [compactNotebookQuery]: {
+                columnGap: 0,
+              },
+            }}
+          >
+            <Grid size={{ xs: 12, md: 4 }} sx={{ display: 'flex', [compactNotebookQuery]: { flexBasis: '38%', maxWidth: '38%' } }}>
+              <Stack
+                spacing={3}
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                  [compactNotebookQuery]: {
+                    spacing: 2,
+                  },
+                }}
+              >
                 <motion.div {...contactMotion(0)} style={{ flex: 1, display: 'flex' }}>
                   <Paper elevation={0} sx={infoCardSx}>
-                    <EmailIcon color="primary" sx={{ fontSize: { xs: 40, xl: 46 }, mb: 1 }} />
+                    <EmailIcon color="primary" sx={{ fontSize: { xs: 40, xl: 46 }, mb: 1, [compactNotebookQuery]: { fontSize: 34, mb: 0.6 } }} />
                     <Typography variant="h6" gutterBottom>
                       Email
                     </Typography>
@@ -103,7 +165,7 @@ const Contact = () => {
 
                 <motion.div {...contactMotion(0.1)} style={{ flex: 1, display: 'flex' }}>
                   <Paper elevation={0} sx={infoCardSx}>
-                    <PhoneIcon color="primary" sx={{ fontSize: { xs: 40, xl: 46 }, mb: 1 }} />
+                    <PhoneIcon color="primary" sx={{ fontSize: { xs: 40, xl: 46 }, mb: 1, [compactNotebookQuery]: { fontSize: 34, mb: 0.6 } }} />
                     <Typography variant="h6" gutterBottom>
                       Teléfono
                     </Typography>
@@ -115,7 +177,7 @@ const Contact = () => {
 
                 <motion.div {...contactMotion(0.2)} style={{ flex: 1, display: 'flex' }}>
                   <Paper elevation={0} sx={infoCardSx}>
-                    <LocationOnIcon color="primary" sx={{ fontSize: { xs: 40, xl: 46 }, mb: 1 }} />
+                    <LocationOnIcon color="primary" sx={{ fontSize: { xs: 40, xl: 46 }, mb: 1, [compactNotebookQuery]: { fontSize: 34, mb: 0.6 } }} />
                     <Typography variant="h6" gutterBottom>
                       Ubicación
                     </Typography>
@@ -127,7 +189,16 @@ const Contact = () => {
               </Stack>
             </Grid>
 
-            <Grid size={{ xs: 12, md: 8 }} sx={{ display: 'flex' }}>
+            <Grid
+              size={{ xs: 12, md: 8 }}
+              sx={{
+                display: 'flex',
+                [compactNotebookQuery]: {
+                  flexBasis: '62%',
+                  maxWidth: '62%',
+                },
+              }}
+            >
               <Paper
                 component={motion.div}
                 initial={{ opacity: 0, y: 34 }}
@@ -142,10 +213,28 @@ const Contact = () => {
                   p: { xs: 3, md: 4, lg: 5, xl: 6 },
                   background: 'rgba(23, 28, 33, 0.94)',
                   border: '1px solid rgba(202, 205, 208, 0.12)',
+                  [notebookLandscapeQuery]: {
+                    p: 3.5,
+                  },
+                  [compactNotebookQuery]: {
+                    p: 3,
+                  },
                 }}
               >
                 <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', width: '100%' }}>
-                  <Stack spacing={3} sx={{ width: '100%', justifyContent: 'center' }}>
+                  <Stack
+                    spacing={3}
+                    sx={{
+                      width: '100%',
+                      justifyContent: 'center',
+                      [notebookLandscapeQuery]: {
+                        spacing: 2,
+                      },
+                      [compactNotebookQuery]: {
+                        spacing: 1.5,
+                      },
+                    }}
+                  >
                     <TextField
                       fullWidth
                       label="Nombre"
@@ -154,6 +243,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       variant="outlined"
+                      size="small"
                     />
 
                     <TextField
@@ -165,6 +255,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       variant="outlined"
+                      size="small"
                     />
 
                     <TextField
@@ -174,6 +265,7 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       variant="outlined"
+                      size="small"
                     />
 
                     <TextField
@@ -186,6 +278,19 @@ const Contact = () => {
                       multiline
                       rows={7}
                       variant="outlined"
+                      size="small"
+                      sx={{
+                        [notebookLandscapeQuery]: {
+                          '& .MuiInputBase-root': {
+                            minHeight: 160,
+                          },
+                        },
+                        [compactNotebookQuery]: {
+                          '& .MuiInputBase-root': {
+                            minHeight: 128,
+                          },
+                        },
+                      }}
                     />
 
                     <Button
@@ -200,6 +305,9 @@ const Contact = () => {
                         bgcolor: 'secondary.main',
                         color: '#151006',
                         '&:hover': { bgcolor: 'secondary.light' },
+                        [compactNotebookQuery]: {
+                          py: 1.15,
+                        },
                       }}
                     >
                       Enviar Mensaje
@@ -229,6 +337,20 @@ const infoCardSx = {
   '&:hover': {
     borderColor: 'rgba(106, 184, 255, 0.42)',
     background: 'rgba(29, 35, 41, 0.98)',
+  },
+  [notebookLandscapeQuery]: {
+    p: 2.8,
+  },
+  [compactNotebookQuery]: {
+    p: 2.25,
+    minHeight: 0,
+    '& .MuiTypography-h6': {
+      fontSize: '1.05rem',
+      marginBottom: '0.25rem',
+    },
+    '& .MuiTypography-body1, & .MuiTypography-body2': {
+      fontSize: '0.95rem',
+    },
   },
 };
 
