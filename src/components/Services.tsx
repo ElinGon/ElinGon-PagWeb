@@ -35,10 +35,14 @@ const Services = () => {
     <Box
       id="servicios"
       sx={{
-        py: { xs: 9, md: 13 },
-        background: '#0b1012',
+        minHeight: { md: '100svh' },
+        py: { xs: 7, sm: 8, md: 8 },
+        background: '#10151a',
         position: 'relative',
         overflow: 'hidden',
+        scrollMarginTop: { xs: 64, md: 72 },
+        display: { md: 'flex' },
+        alignItems: { md: 'center' },
       }}
     >
       <Box
@@ -50,8 +54,15 @@ const Services = () => {
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-        <Stack spacing={{ xs: 5, md: 7 }}>
+      <Container
+        maxWidth="xl"
+        sx={{
+          position: 'relative',
+          zIndex: 1,
+          px: { xs: 2.5, sm: 4, lg: 7, xl: 9 },
+        }}
+      >
+        <Stack spacing={{ xs: 4, md: 5, xl: 7 }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -63,12 +74,27 @@ const Services = () => {
                 label="Lo que hacemos"
                 color="primary"
                 variant="outlined"
-                sx={{ mb: 2, borderColor: 'rgba(106, 184, 255, 0.36)' }}
+                sx={{
+                  mb: 2,
+                  borderColor: 'rgba(160, 170, 180, 0.32)',
+                  color: 'grey.200',
+                  width: 'fit-content',
+                  maxWidth: '100%',
+                  mx: 'auto',
+                  height: { xs: 28, md: 32 },
+                  fontSize: { xs: '0.72rem', md: '0.82rem' },
+                  px: { xs: 0.5, md: 1 },
+                }}
               />
               <Typography
                 variant="h2"
                 sx={{
-                  fontSize: { xs: '2.2rem', md: '4.7rem' },
+                  fontSize: {
+                    xs: '2.15rem',
+                    md: '4rem',
+                    lg: '4.7rem',
+                    xl: '5.35rem',
+                  },
                   color: 'text.primary',
                   mb: 2,
                 }}
@@ -79,9 +105,10 @@ const Services = () => {
                 variant="h6"
                 sx={{
                   color: 'text.secondary',
-                  maxWidth: '700px',
+                  maxWidth: { xs: '700px', xl: '860px' },
                   mx: 'auto',
                   fontWeight: 360,
+                  fontSize: { xs: '1rem', md: '1.25rem', xl: '1.45rem' },
                 }}
               >
                 Diseñamos, construimos y acompañamos soluciones tecnológicas que se sienten simples por fuera y sólidas por dentro.
@@ -91,7 +118,7 @@ const Services = () => {
 
           <Grid container spacing={3}>
             {services.map((service, index) => (
-              <Grid key={index} size={{ xs: 12, md: 4 }}>
+              <Grid key={index} size={{ xs: 12, md: 4 }} sx={{ display: 'flex' }}>
                 <motion.div
                   variants={cardVariants}
                   initial="hidden"
@@ -99,14 +126,18 @@ const Services = () => {
                   transition={{ duration: 0.58, delay: index * 0.05, ease: 'easeOut' }}
                   viewport={{ once: true }}
                   whileHover={{ y: -12, rotateX: 3, rotateY: -3 }}
+                  style={{ display: 'flex', width: '100%' }}
                 >
                   <Card
                     sx={{
+                      width: '100%',
                       height: '100%',
+                      minHeight: { xs: 280, md: 340, lg: 380, xl: 430 },
                       position: 'relative',
                       overflow: 'hidden',
-                      background: 'rgba(17, 23, 25, 0.88)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      display: 'flex',
+                      background: 'rgba(23, 28, 33, 0.92)',
+                      border: '1px solid rgba(202, 205, 208, 0.12)',
                       transition: 'border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease',
                       '&:before': {
                         content: '""',
@@ -130,21 +161,37 @@ const Services = () => {
                       },
                     }}
                   >
-                    <CardContent sx={{ p: { xs: 3, md: 4 }, textAlign: 'left', position: 'relative' }}>
+                    <CardContent
+                      sx={{
+                        p: { xs: 3, md: 4, lg: 5, xl: 6 },
+                        textAlign: 'left',
+                        position: 'relative',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        width: '100%',
+                      }}
+                    >
                       <Chip
                         label={service.tag}
                         size="small"
                         sx={{
+                          alignSelf: 'flex-start',
+                          width: 'fit-content',
+                          maxWidth: '100%',
                           mb: 3,
-                          bgcolor: 'rgba(246, 198, 91, 0.12)',
-                          color: 'secondary.light',
+                          bgcolor: 'rgba(115, 123, 132, 0.22)',
+                          color: 'grey.100',
+                          fontWeight: 700,
+                          '& .MuiChip-label': {
+                            px: 1,
+                          },
                         }}
                       />
                       <Box
                         className="service-icon"
                         sx={{
-                          width: 64,
-                          height: 64,
+                          width: { xs: 64, lg: 72, xl: 84 },
+                          height: { xs: 64, lg: 72, xl: 84 },
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'flex-start',
@@ -157,11 +204,23 @@ const Services = () => {
                       </Box>
                       <Typography
                         variant="h5"
-                        sx={{ color: 'text.primary', mb: 2 }}
+                        sx={{
+                          color: 'text.primary',
+                          mb: 2,
+                          mt: 'auto',
+                          fontSize: { lg: '1.7rem', xl: '2rem' },
+                        }}
                       >
                         {service.title}
                       </Typography>
-                      <Typography sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
+                      <Typography
+                        sx={{
+                          color: 'text.secondary',
+                          lineHeight: 1.7,
+                          minHeight: { md: 82, xl: 96 },
+                          fontSize: { lg: '1.05rem', xl: '1.22rem' },
+                        }}
+                      >
                         {service.description}
                       </Typography>
                     </CardContent>

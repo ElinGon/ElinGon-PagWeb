@@ -21,7 +21,7 @@ const Footer = () => {
   return (
     <Box
       sx={{
-        background: "#080b0d",
+        background: "#0b0f13",
         color: "white",
         py: 6,
         borderTop: "1px solid rgba(255,255,255,0.08)",
@@ -55,7 +55,7 @@ const Footer = () => {
             <IconButton
               sx={{
                 color: "white",
-                border: "1px solid rgba(255,255,255,0.12)",
+                border: "1px solid rgba(202,205,208,0.14)",
                 "&:hover": { bgcolor: "rgba(106,184,255,0.12)", color: "primary.light" },
               }}
               onClick={redirectToWhatsApp}
@@ -66,7 +66,7 @@ const Footer = () => {
             <IconButton
               sx={{
                 color: "white",
-                border: "1px solid rgba(255,255,255,0.12)",
+                border: "1px solid rgba(202,205,208,0.14)",
                 "&:hover": { bgcolor: "rgba(246,198,91,0.12)", color: "secondary.light" },
               }}
               onClick={redirectToInstagram}

@@ -12,9 +12,22 @@ const stats = [
 
 const About = () => {
   return (
-    <Box id="nosotros" sx={{ py: { xs: 9, md: 13 }, bgcolor: 'background.default' }}>
-      <Container maxWidth="lg">
-        <Grid container spacing={{ xs: 5, md: 8 }} alignItems="center">
+    <Box
+      id="nosotros"
+      sx={{
+        minHeight: { md: '100svh' },
+        py: { xs: 7, sm: 8, md: 8 },
+        bgcolor: 'background.default',
+        scrollMarginTop: { xs: 64, md: 72 },
+        display: { md: 'flex' },
+        alignItems: { md: 'center' },
+      }}
+    >
+      <Container
+        maxWidth="xl"
+        sx={{ px: { xs: 2.5, sm: 4, lg: 7, xl: 9 } }}
+      >
+        <Grid container spacing={{ xs: 5, md: 8, xl: 12 }} alignItems="center">
           <Grid size={{ xs: 12, md: 6 }}>
             <Stack
               component={motion.div}
@@ -26,26 +39,44 @@ const About = () => {
             >
               <Typography
                 variant="overline"
-                sx={{ color: 'secondary.main', fontWeight: 800, letterSpacing: '0.16em' }}
+                sx={{ color: 'grey.300', fontWeight: 800, letterSpacing: '0.16em' }}
               >
                 El equipo
               </Typography>
               <Typography
                 variant="h2"
-                sx={{ color: 'text.primary', fontSize: { xs: '2.2rem', md: '4.2rem' } }}
+                sx={{
+                  color: 'text.primary',
+                  fontSize: { xs: '2.15rem', md: '3.8rem', lg: '4.35rem', xl: '5rem' },
+                }}
               >
                 Cercanía de estudio, calidad de software serio
               </Typography>
-              <Typography variant="body1" color="text.secondary" fontSize={18} lineHeight={1.8}>
+              <Typography
+                variant="body1"
+                color="text.secondary"
+                fontSize={{ xs: 18, xl: 21 }}
+                lineHeight={1.8}
+              >
                 Somos un equipo apasionado de desarrolladores, diseñadores y estrategas
                 digitales comprometidos con la excelencia tecnológica.
               </Typography>
-              <Typography variant="body1" color="text.secondary" fontSize={18} lineHeight={1.8}>
+              <Typography
+                variant="body1"
+                color="text.secondary"
+                fontSize={{ xs: 18, xl: 21 }}
+                lineHeight={1.8}
+              >
                 Desde 2014, hemos ayudado a empresas de todos los tamaños a transformar
                 sus ideas en soluciones digitales exitosas. Nuestra experiencia abarca
                 desde startups hasta grandes corporaciones.
               </Typography>
-              <Typography variant="body1" color="text.secondary" fontSize={18} lineHeight={1.8}>
+              <Typography
+                variant="body1"
+                color="text.secondary"
+                fontSize={{ xs: 18, xl: 21 }}
+                lineHeight={1.8}
+              >
                 Creemos en la innovación constante, la calidad del código y en construir
                 relaciones duraderas con nuestros clientes.
               </Typography>
@@ -64,12 +95,12 @@ const About = () => {
                     viewport={{ once: true, amount: 0.35 }}
                     elevation={0}
                     sx={{
-                      p: 3,
+                      p: { xs: 3, lg: 3.5, xl: 4.5 },
                       display: 'flex',
                       alignItems: 'center',
                       gap: 2.5,
-                      background: 'rgba(17, 23, 25, 0.86)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      background: 'rgba(23, 28, 33, 0.9)',
+                      border: '1px solid rgba(202, 205, 208, 0.12)',
                       transition: 'border-color 0.3s, transform 0.3s',
                       '&:hover': {
                         borderColor: 'rgba(246, 198, 91, 0.42)',
@@ -80,10 +111,19 @@ const About = () => {
                       {stat.icon}
                     </Box>
                     <Box>
-                      <Typography variant="h3" color="text.primary" fontWeight={750}>
+                      <Typography
+                        variant="h3"
+                        color="text.primary"
+                        fontWeight={750}
+                        sx={{ fontSize: { xl: '4rem' } }}
+                      >
                         {stat.number}
                       </Typography>
-                      <Typography variant="body1" color="text.secondary">
+                      <Typography
+                        variant="body1"
+                        color="text.secondary"
+                        sx={{ fontSize: { xl: '1.18rem' } }}
+                      >
                         {stat.label}
                       </Typography>
                     </Box>

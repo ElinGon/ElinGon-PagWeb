@@ -13,15 +13,16 @@ const Hero = () => {
     <Box
       id="inicio"
       sx={{
-        minHeight: { xs: '92vh', md: '100vh' },
+        minHeight: '100svh',
         display: 'flex',
         alignItems: 'center',
-        pt: { xs: 10, md: 12 },
-        pb: { xs: 8, md: 10 },
+        pt: { xs: 8, sm: 9, md: 10 },
+        pb: { xs: 4, md: 5 },
         background:
-          'linear-gradient(135deg, #080b0d 0%, #0f1719 48%, #17201d 100%)',
+          'linear-gradient(135deg, #0b0f13 0%, #141a1f 48%, #1c232a 100%)',
         position: 'relative',
         overflow: 'hidden',
+        boxSizing: 'border-box',
       }}
     >
       <Box
@@ -92,7 +93,7 @@ const Hero = () => {
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(180deg, rgba(8, 11, 13, 0.78) 0%, rgba(8, 11, 13, 0.58) 42%, rgba(8, 11, 13, 0.86) 100%)',
+            'linear-gradient(180deg, rgba(11, 15, 19, 0.8) 0%, rgba(11, 15, 19, 0.6) 42%, rgba(11, 15, 19, 0.9) 100%)',
         }}
       />
       <Box
@@ -100,12 +101,24 @@ const Hero = () => {
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(90deg, rgba(8, 11, 13, 0.88) 0%, rgba(8, 11, 13, 0.46) 46%, rgba(106, 184, 255, 0.16) 100%)',
+            'linear-gradient(90deg, rgba(11, 15, 19, 0.9) 0%, rgba(11, 15, 19, 0.52) 46%, rgba(106, 184, 255, 0.14) 100%)',
         }}
       />
 
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-        <Stack spacing={{ xs: 4, md: 5 }} alignItems="center" textAlign="center">
+        <Stack
+          spacing={{ xs: 2.6, sm: 3.2, md: 3.8 }}
+          alignItems="center"
+          textAlign="center"
+          sx={{
+            '@media (max-height: 760px)': {
+              transform: 'scale(0.9)',
+            },
+            '@media (max-height: 650px)': {
+              transform: 'scale(0.82)',
+            },
+          }}
+        >
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -117,9 +130,10 @@ const Hero = () => {
                 src="/elingon.png"
                 alt="ElinGon Logo"
                 sx={{
-                  width: { xs: 138, sm: 170, md: 210 },
+                  width: { xs: 128, sm: 164, md: 200 },
                   height: 'auto',
                   maxWidth: '100%',
+                  objectFit: 'contain',
                   filter: 'drop-shadow(0 22px 45px rgba(0, 0, 0, 0.45))',
                 }}
               />
@@ -129,7 +143,7 @@ const Hero = () => {
               variant="overline"
               sx={{
                 display: 'block',
-                mt: { xs: 3, md: 4 },
+                mt: { xs: 1.8, md: 2.2 },
                 color: 'primary.light',
                 fontWeight: 800,
                 fontSize: { xs: '0.74rem', md: '0.82rem' },
@@ -150,7 +164,11 @@ const Hero = () => {
               sx={{
                 maxWidth: '920px',
                 color: 'text.primary',
-                fontSize: { xs: '2.6rem', sm: '4rem', md: '6.4rem' },
+                fontSize: {
+                  xs: 'clamp(2rem, 10vw, 2.85rem)',
+                  sm: 'clamp(3rem, 8vw, 4rem)',
+                  md: 'clamp(4.6rem, 6.4vw, 5.8rem)',
+                },
               }}
             >
               Software claro para negocios que quieren{' '}
@@ -169,11 +187,11 @@ const Hero = () => {
               sx={{
                 maxWidth: '720px',
                 mx: 'auto',
-                mt: 3,
+                mt: { xs: 1.6, md: 2.2 },
                 color: 'text.secondary',
                 fontWeight: 360,
                 lineHeight: 1.65,
-                fontSize: { xs: '1rem', md: '1.2rem' },
+                fontSize: { xs: '0.95rem', md: '1.15rem' },
               }}
             >
               Creamos sitios, apps y sistemas a medida con diseño cuidado,
@@ -189,7 +207,7 @@ const Hero = () => {
             <Stack
               direction={{ xs: 'column', sm: 'row' }}
               spacing={2}
-              sx={{ mt: 1, width: { xs: '100%', sm: 'auto' } }}
+              sx={{ mt: { xs: 0, md: 0.5 }, width: { xs: '100%', sm: 'auto' } }}
             >
               <Button
                 component={motion.button}

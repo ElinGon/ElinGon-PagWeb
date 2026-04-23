@@ -13,15 +13,27 @@ export const theme = createTheme({
       light: '#ffe08a',
       dark: '#c28e2c',
     },
+    grey: {
+      50: '#f5f5f5',
+      100: '#e6e7e8',
+      200: '#cacdd0',
+      300: '#aeb3b8',
+      400: '#8f979e',
+      500: '#737b84',
+      600: '#555d66',
+      700: '#3b4249',
+      800: '#23292f',
+      900: '#13181d',
+    },
     background: {
-      default: '#080b0d',
-      paper: '#111719',
+      default: '#0b0f13',
+      paper: '#171c21',
     },
     text: {
-      primary: '#f5f7f6',
-      secondary: 'rgba(245, 247, 246, 0.72)',
+      primary: '#f2f3f4',
+      secondary: 'rgba(214, 218, 222, 0.76)',
     },
-    divider: 'rgba(255, 255, 255, 0.12)',
+    divider: 'rgba(202, 205, 208, 0.14)',
   },
   typography: {
     fontFamily: '"Roboto Flex", "Inter", "Helvetica", "Arial", sans-serif',
@@ -55,7 +67,7 @@ export const theme = createTheme({
       styleOverrides: {
         body: {
           background:
-            'linear-gradient(180deg, #080b0d 0%, #0d1214 44%, #080b0d 100%)',
+            'linear-gradient(180deg, #0b0f13 0%, #11161b 44%, #0b0f13 100%)',
         },
       },
     },
