@@ -3,6 +3,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -27,55 +28,91 @@ const Contact = () => {
   };
 
   return (
-    <Box id="contacto" sx={{ py: 10, bgcolor: 'background.default' }}>
+    <Box
+      id="contacto"
+      sx={{
+        py: { xs: 9, md: 13 },
+        bgcolor: '#0b1012',
+        borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+      }}
+    >
       <Container maxWidth="lg">
         <Stack spacing={6}>
           <Box textAlign="center">
-            <Typography variant="h2" gutterBottom>
-              Contáctanos
-            </Typography>
-            <Typography variant="h6" color="text.secondary">
-              ¿Tienes un proyecto en mente? Nos encantaría escucharte
-            </Typography>
+            <Box
+              component={motion.div}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.4 }}
+            >
+              <Typography
+                variant="h2"
+                sx={{ fontSize: { xs: '2.2rem', md: '4.5rem' }, mb: 2 }}
+              >
+                Hablemos de tu próximo proyecto
+              </Typography>
+              <Typography variant="h6" color="text.secondary" fontWeight={360}>
+                ¿Tienes un proyecto en mente? Nos encantaría escucharte
+              </Typography>
+            </Box>
           </Box>
 
-          <Grid container spacing={4}>
-            <Grid>
+          <Grid container spacing={3.5}>
+            <Grid size={{ xs: 12, md: 4 }}>
               <Stack spacing={3}>
-                <Paper elevation={2} sx={{ p: 3, textAlign: 'center' }}>
-                  <EmailIcon color="primary" sx={{ fontSize: 40, mb: 1 }} />
-                  <Typography variant="h6" gutterBottom>
-                    Email
-                  </Typography>
-                  <Typography color="text.secondary">
-                    info@techsolutions.com
-                  </Typography>
-                </Paper>
+                <motion.div {...contactMotion(0)}>
+                  <Paper elevation={0} sx={infoCardSx}>
+                    <EmailIcon color="primary" sx={{ fontSize: 40, mb: 1 }} />
+                    <Typography variant="h6" gutterBottom>
+                      Email
+                    </Typography>
+                    <Typography color="text.secondary">
+                      elingonsistemas@gmail.com
+                    </Typography>
+                  </Paper>
+                </motion.div>
 
-                <Paper elevation={2} sx={{ p: 3, textAlign: 'center' }}>
-                  <PhoneIcon color="primary" sx={{ fontSize: 40, mb: 1 }} />
-                  <Typography variant="h6" gutterBottom>
-                    Teléfono
-                  </Typography>
-                  <Typography color="text.secondary">
-                    +595 21 123 4567
-                  </Typography>
-                </Paper>
+                <motion.div {...contactMotion(0.1)}>
+                  <Paper elevation={0} sx={infoCardSx}>
+                    <PhoneIcon color="primary" sx={{ fontSize: 40, mb: 1 }} />
+                    <Typography variant="h6" gutterBottom>
+                      Teléfono
+                    </Typography>
+                    <Typography color="text.secondary">
+                      +595 21 123 4567
+                    </Typography>
+                  </Paper>
+                </motion.div>
 
-                <Paper elevation={2} sx={{ p: 3, textAlign: 'center' }}>
-                  <LocationOnIcon color="primary" sx={{ fontSize: 40, mb: 1 }} />
-                  <Typography variant="h6" gutterBottom>
-                    Ubicación
-                  </Typography>
-                  <Typography color="text.secondary">
-                    Ciudad del Este, Paraguay
-                  </Typography>
-                </Paper>
+                <motion.div {...contactMotion(0.2)}>
+                  <Paper elevation={0} sx={infoCardSx}>
+                    <LocationOnIcon color="primary" sx={{ fontSize: 40, mb: 1 }} />
+                    <Typography variant="h6" gutterBottom>
+                      Ubicación
+                    </Typography>
+                    <Typography color="text.secondary">
+                      Ciudad del Este, Paraguay
+                    </Typography>
+                  </Paper>
+                </motion.div>
               </Stack>
             </Grid>
 
-            <Grid>
-              <Paper elevation={3} sx={{ p: 4 }}>
+            <Grid size={{ xs: 12, md: 8 }}>
+              <Paper
+                component={motion.div}
+                initial={{ opacity: 0, y: 34 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, delay: 0.12, ease: 'easeOut' }}
+                viewport={{ once: true, amount: 0.25 }}
+                elevation={0}
+                sx={{
+                  p: { xs: 3, md: 4 },
+                  background: 'rgba(17, 23, 25, 0.92)',
+                  border: '1px solid rgba(255, 255, 255, 0.12)',
+                }}
+              >
                 <form onSubmit={handleSubmit}>
                   <Stack spacing={3}>
                     <TextField
@@ -121,10 +158,18 @@ const Contact = () => {
                     />
 
                     <Button
+                      component={motion.button}
+                      whileHover={{ y: -2, scale: 1.01 }}
+                      whileTap={{ scale: 0.98 }}
                       type="submit"
                       variant="contained"
                       size="large"
-                      sx={{ py: 1.5 }}
+                      sx={{
+                        py: 1.5,
+                        bgcolor: 'secondary.main',
+                        color: '#151006',
+                        '&:hover': { bgcolor: 'secondary.light' },
+                      }}
                     >
                       Enviar Mensaje
                     </Button>
@@ -138,5 +183,25 @@ const Contact = () => {
     </Box>
   );
 };
+
+const infoCardSx = {
+  p: 3,
+  textAlign: 'left',
+  background: 'rgba(17, 23, 25, 0.82)',
+  border: '1px solid rgba(255, 255, 255, 0.1)',
+  transition: 'border-color 0.25s ease, background 0.25s ease',
+  '&:hover': {
+    borderColor: 'rgba(106, 184, 255, 0.42)',
+    background: 'rgba(17, 23, 25, 0.98)',
+  },
+};
+
+const contactMotion = (delay: number) => ({
+  initial: { opacity: 0, x: -28 },
+  whileInView: { opacity: 1, x: 0 },
+  whileHover: { x: 6 },
+  transition: { duration: 0.55, delay, ease: 'easeOut' as const },
+  viewport: { once: true, amount: 0.35 },
+});
 
 export default Contact;

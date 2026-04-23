@@ -1,61 +1,57 @@
-import { Box, Container, Typography, Grid, Card, CardContent, Stack } from '@mui/material';
+import { Box, Container, Typography, Grid, Card, CardContent, Stack, Chip } from '@mui/material';
 import WebIcon from '@mui/icons-material/Web';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import { motion } from 'framer-motion';
 
 const services = [
   {
     icon: <WebIcon sx={{ fontSize: 50 }} />,
     title: 'Desarrollo Web',
-    description: 'Aplicaciones web modernas con React, Next.js y las últimas tecnologías.',
-    gradient: 'linear-gradient(135deg, #000000ff 0%, #000000ff 100%)',
+    description: 'Landing pages, e-commerce y plataformas rápidas, escalables y listas para convertir.',
+    tag: 'Web',
   },
   {
     icon: <PhoneAndroidIcon sx={{ fontSize: 50 }} />,
     title: 'Apps Móviles',
-    description: 'Desarrollo nativo y multiplataforma para iOS y Android.',
-    gradient: 'linear-gradient(135deg, #000000ff 0%, #000000ff 100%)',
+    description: 'Experiencias móviles fluidas para Android y iOS, pensadas para uso real diario.',
+    tag: 'Mobile',
   },
-
+  {
+    icon: <DesignServicesIcon sx={{ fontSize: 50 }} />,
+    title: 'Sistemas a medida',
+    description: 'Paneles, automatizaciones y herramientas internas que ordenan procesos del negocio.',
+    tag: 'Software',
+  },
 ];
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 44, scale: 0.96 },
+  show: { opacity: 1, y: 0, scale: 1 },
+};
 
 const Services = () => {
   return (
     <Box
       id="servicios"
       sx={{
-        py: 12,
-        background: '#000000ff',
+        py: { xs: 9, md: 13 },
+        background: '#0b1012',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
-      {/* Elementos de fondo */}
       <Box
         sx={{
           position: 'absolute',
-          width: '600px',
-          height: '600px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%)',
-          top: '-300px',
-          left: '-300px',
-        }}
-      />
-      <Box
-        sx={{
-          position: 'absolute',
-          width: '400px',
-          height: '400px',
-          borderRadius: '50%',
-          background: '#0000',
-          bottom: '-200px',
-          right: '-200px',
+          inset: 0,
+          background:
+            'linear-gradient(180deg, rgba(106, 184, 255, 0.08) 0%, rgba(8, 11, 13, 0) 36%)',
         }}
       />
 
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-        <Stack spacing={8}>
+        <Stack spacing={{ xs: 5, md: 7 }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -63,84 +59,109 @@ const Services = () => {
             viewport={{ once: true }}
           >
             <Box textAlign="center">
+              <Chip
+                label="Lo que hacemos"
+                color="primary"
+                variant="outlined"
+                sx={{ mb: 2, borderColor: 'rgba(106, 184, 255, 0.36)' }}
+              />
               <Typography
-                variant="h1"
+                variant="h2"
                 sx={{
-                  fontSize: { xs: '1rem', md: '5rem' },
-                  color: 'white',
-                  fontWeight: 300,
-                  lineHeight: 1.1,
-                  mb: 3,
+                  fontSize: { xs: '2.2rem', md: '4.7rem' },
+                  color: 'text.primary',
+                  mb: 2,
                 }}
               >
-                Servicios 
+                Servicios digitales con foco en resultado
               </Typography>
               <Typography
                 variant="h6"
                 sx={{
-                  color: 'rgba(255, 255, 255, 0.7)',
+                  color: 'text.secondary',
                   maxWidth: '700px',
                   mx: 'auto',
+                  fontWeight: 360,
                 }}
               >
-                Soluciones tecnológicas que impulsan el crecimiento de tu negocio
+                Diseñamos, construimos y acompañamos soluciones tecnológicas que se sienten simples por fuera y sólidas por dentro.
               </Typography>
             </Box>
           </motion.div>
 
-          <Grid container spacing={4}>
+          <Grid container spacing={3}>
             {services.map((service, index) => (
-              <Grid key={index}>
+              <Grid key={index} size={{ xs: 12, md: 4 }}>
                 <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  variants={cardVariants}
+                  initial="hidden"
+                  whileInView="show"
+                  transition={{ duration: 0.58, delay: index * 0.05, ease: 'easeOut' }}
                   viewport={{ once: true }}
-                  whileHover={{ y: -10 }}
+                  whileHover={{ y: -12, rotateX: 3, rotateY: -3 }}
                 >
                   <Card
                     sx={{
                       height: '100%',
-                      background: 'rgba(30, 41, 59, 0.5)',
-                      backdropFilter: 'blur(10px)',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      background: 'rgba(17, 23, 25, 0.88)',
                       border: '1px solid rgba(255, 255, 255, 0.1)',
-                      borderRadius: 4,
-                      transition: 'all 0.3s ease',
+                      transition: 'border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease',
+                      '&:before': {
+                        content: '""',
+                        position: 'absolute',
+                        inset: 0,
+                        background:
+                          'linear-gradient(135deg, rgba(106, 184, 255, 0.16), transparent 42%, rgba(246, 198, 91, 0.08))',
+                        opacity: 0,
+                        transition: 'opacity 0.3s ease',
+                      },
                       '&:hover': {
-                        border: '1px solid rgba(255, 255, 255, 0.3)',
-                        boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
+                        borderColor: 'rgba(106, 184, 255, 0.46)',
+                        boxShadow: '0 22px 60px rgba(0, 0, 0, 0.28)',
+                        '&:before': {
+                          opacity: 1,
+                        },
                         '& .service-icon': {
-                          transform: 'scale(1.1) rotate(5deg)',
+                          color: 'secondary.main',
+                          transform: 'translateX(6px) rotate(-3deg)',
                         },
                       },
                     }}
                   >
-                    <CardContent sx={{ p: 4, textAlign: 'center' }}>
+                    <CardContent sx={{ p: { xs: 3, md: 4 }, textAlign: 'left', position: 'relative' }}>
+                      <Chip
+                        label={service.tag}
+                        size="small"
+                        sx={{
+                          mb: 3,
+                          bgcolor: 'rgba(246, 198, 91, 0.12)',
+                          color: 'secondary.light',
+                        }}
+                      />
                       <Box
                         className="service-icon"
                         sx={{
-                          background: service.gradient,
-                          width: 80,
-                          height: 80,
-                          borderRadius: 3,
+                          width: 64,
+                          height: 64,
                           display: 'flex',
                           alignItems: 'center',
-                          justifyContent: 'center',
-                          mx: 'auto',
+                          justifyContent: 'flex-start',
                           mb: 3,
-                          color: 'white',
-                          transition: 'transform 0.3s ease',
+                          color: 'primary.light',
+                          transition: 'color 0.3s ease, transform 0.3s ease',
                         }}
                       >
                         {service.icon}
                       </Box>
                       <Typography
                         variant="h5"
-                        sx={{ color: 'white', fontWeight: 700, mb: 2 }}
+                        sx={{ color: 'text.primary', mb: 2 }}
                       >
                         {service.title}
                       </Typography>
-                      <Typography sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+                      <Typography sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
                         {service.description}
                       </Typography>
                     </CardContent>

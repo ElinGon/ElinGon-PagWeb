@@ -1,20 +1,50 @@
-import { Box, Container, Typography, Stack, IconButton, Divider } from '@mui/material';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import CodeIcon from '@mui/icons-material/Code';
+import {
+  Box,
+  Container,
+  Typography,
+  Stack,
+  IconButton,
+  Divider,
+} from "@mui/material";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import { WhatsApp } from "@mui/icons-material";
+
+const redirectToInstagram = () => {
+  window.open("https://www.instagram.com/elingonsistemas_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", "_blank");
+};
+
+const redirectToWhatsApp = () => {
+  window.open("https://api.whatsapp.com/send/?phone=595994804891&text=Hola+ElinGon%21%21+Te+escribo+desde+tu+website%2C+estoy+interesado%2Fa+en+adquirir+una+p%C3%A1gina+web.&type=phone_number&app_absent=0", "_blank");
+}
 
 const Footer = () => {
   return (
-    <Box sx={{ bgcolor: 'primary.main', background:'black',color: 'white', py: 6 }}>
+    <Box
+      sx={{
+        background: "#080b0d",
+        color: "white",
+        py: 6,
+        borderTop: "1px solid rgba(255,255,255,0.08)",
+      }}
+    >
       <Container maxWidth="lg">
         <Stack spacing={4}>
-          <Box display="flex" alignItems="center" justifyContent="center" gap={1}>
-            <CodeIcon sx={{ fontSize: 30 }} />
-            <Typography variant="h5" fontWeight={700}>
-              TechSolutions
-            </Typography>
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            gap={1}
+          >
+            <Box
+              component="img"
+              src="/elingonHorizontal.png"
+              alt="ElinGon Logo"
+              sx={{
+                width: { xs: "120px", sm: "150px" },
+                height: "auto",
+                maxWidth: "100%",
+              }}
+            />
           </Box>
 
           <Typography variant="body1" textAlign="center" sx={{ opacity: 0.9 }}>
@@ -23,35 +53,33 @@ const Footer = () => {
 
           <Stack direction="row" spacing={2} justifyContent="center">
             <IconButton
-              sx={{ color: 'white', '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' } }}
-              aria-label="Facebook"
+              sx={{
+                color: "white",
+                border: "1px solid rgba(255,255,255,0.12)",
+                "&:hover": { bgcolor: "rgba(106,184,255,0.12)", color: "primary.light" },
+              }}
+              onClick={redirectToWhatsApp}
+              aria-label="WhatsApp"
             >
-              <FacebookIcon />
+              <WhatsApp />
             </IconButton>
             <IconButton
-              sx={{ color: 'white', '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' } }}
-              aria-label="Twitter"
-            >
-              <TwitterIcon />
-            </IconButton>
-            <IconButton
-              sx={{ color: 'white', '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' } }}
-              aria-label="LinkedIn"
-            >
-              <LinkedInIcon />
-            </IconButton>
-            <IconButton
-              sx={{ color: 'white', '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' } }}
+              sx={{
+                color: "white",
+                border: "1px solid rgba(255,255,255,0.12)",
+                "&:hover": { bgcolor: "rgba(246,198,91,0.12)", color: "secondary.light" },
+              }}
+              onClick={redirectToInstagram}
               aria-label="Instagram"
             >
               <InstagramIcon />
             </IconButton>
           </Stack>
 
-          <Divider sx={{ bgcolor: 'rgba(255,255,255,0.2)' }} />
+          <Divider sx={{ bgcolor: "rgba(255,255,255,0.2)" }} />
 
           <Typography variant="body2" textAlign="center" sx={{ opacity: 0.8 }}>
-            © 2024 TechSolutions. Todos los derechos reservados.
+            © 2024 ElinGon Sistemas. Todos los derechos reservados.
           </Typography>
         </Stack>
       </Container>
