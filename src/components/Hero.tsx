@@ -36,6 +36,9 @@ const riseIn = {
   },
 };
 
+const notebookLandscapeQuery =
+  '@media (min-width: 1024px) and (max-width: 1600px) and (max-height: 950px)';
+
 const Hero = () => {
   return (
     <Box
@@ -45,7 +48,7 @@ const Hero = () => {
         height: { md: '100svh' },
         display: 'flex',
         alignItems: 'center',
-        pt: { xs: '84px', sm: '92px', md: '112px' },
+        pt: { xs: '84px', sm: '92px', md: '60px' },
         pb: { xs: '28px', md: '20px' },
         background:
           'linear-gradient(135deg, #0b0f13 0%, #141a1f 48%, #1c232a 100%)',
@@ -53,8 +56,12 @@ const Hero = () => {
         overflow: 'hidden',
         boxSizing: 'border-box',
         '@media (max-height: 860px)': {
-          pt: { xs: '80px', sm: '88px', md: '96px' },
+          pt: { xs: '80px', sm: '88px', md: '72px' },
           pb: { xs: '20px', md: '24px' },
+        },
+        [notebookLandscapeQuery]: {
+          pt: '52px',
+          pb: '16px',
         },
       }}
     >
@@ -161,26 +168,35 @@ const Hero = () => {
           alignItems: 'center',
           justifyContent: 'center',
           px: { xs: 2.25, sm: 3 },
-          minHeight: { xs: 'calc(100svh - 112px)', md: 'calc(100svh - 122px)' },
+          minHeight: { xs: 'calc(100svh - 112px)', md: 'calc(100svh - 100px)' },
           '@media (max-height: 860px)': {
-            minHeight: { xs: 'calc(100svh - 100px)', md: 'calc(100svh - 116px)' },
+            minHeight: { xs: 'calc(100svh - 100px)', md: 'calc(100svh - 96px)' },
+          },
+          [notebookLandscapeQuery]: {
+            minHeight: 'calc(100svh - 68px)',
           },
         }}
       >
         <Stack
-          spacing={{ xs: 1.9, sm: 2.8, md: 2.4 }}
+          spacing={{ xs: 1.9, sm: 2.8, md: 3.5 }}
           alignItems="center"
           textAlign="center"
           sx={{
             width: '100%',
             maxWidth: 1100,
             py: { xs: 0.5, md: 0 },
-            gap: { xs: 1.6, sm: 2.4, md: 2 },
+            gap: { xs: 1.6, sm: 2.4, md: 3.8 },
             '@media (max-height: 760px)': {
               transform: 'scale(0.92)',
             },
             '@media (max-height: 650px)': {
               transform: 'scale(0.84)',
+            },
+            [notebookLandscapeQuery]: {
+              maxWidth: 920,
+              gap: 2,
+              transform: 'scale(0.88)',
+              transformOrigin: 'center top',
             },
           }}
         >
@@ -195,11 +211,14 @@ const Hero = () => {
                 src="/elingon-ss.png"
                 alt="ElinGon Logo"
                 sx={{
-                  width: { xs: 120, sm: 180, md: 220, lg: 250 },
+                  width: { xs: 120, sm: 180, md: 180, lg: 210 },
                   height: 'auto',
                   maxWidth: '100%',
                   objectFit: 'contain',
                   filter: 'drop-shadow(0 22px 45px rgba(0, 0, 0, 0.45))',
+                  [notebookLandscapeQuery]: {
+                    width: 150,
+                  },
                 }}
               />
             </motion.div>
@@ -219,11 +238,16 @@ const Hero = () => {
                 fontSize: {
                   xs: 'clamp(2.05rem, 9.6vw, 2.8rem)',
                   sm: 'clamp(3rem, 7vw, 4.2rem)',
-                  md: 'clamp(4.15rem, 6vw, 5.5rem)',
+                  md: 'clamp(3.5rem, 5.5vw, 4.8rem)',
                 },
                 lineHeight: { xs: 1, md: 0.94 },
                 letterSpacing: '-0.04em',
                 textWrap: 'balance',
+                [notebookLandscapeQuery]: {
+                  maxWidth: 760,
+                  fontSize: 'clamp(2.9rem, 4.5vw, 3.7rem)',
+                  lineHeight: 0.98,
+                },
               }}
             >
               {heroLeadWords.map((word, index) => (
@@ -238,6 +262,7 @@ const Hero = () => {
                     ease: 'easeOut',
                   }}
                   sx={{ display: 'inline-block', mr: { xs: 0.8, md: 1.2 } }}
+                  
                 >
                   {word}
                 </Box>
@@ -289,9 +314,13 @@ const Hero = () => {
               justifyContent="center"
               alignItems="center"
               sx={{
-                mt: { xs: 1.7, md: 2.4 },
+                mt: { xs: 1.7, md: 1.8 },
                 flexWrap: 'wrap',
                 rowGap: 1,
+                [notebookLandscapeQuery]: {
+                  mt: 1.1,
+                  rowGap: 0.7,
+                },
               }}
             >
               {proofItems.map((item) => (
@@ -309,6 +338,10 @@ const Hero = () => {
                     bgcolor: 'rgba(12, 18, 24, 0.54)',
                     backdropFilter: 'blur(10px)',
                     boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.06)',
+                    [notebookLandscapeQuery]: {
+                      px: 1.05,
+                      py: 0.6,
+                    },
                   }}
                 >
                   <Typography
@@ -316,6 +349,9 @@ const Hero = () => {
                       fontSize: { xs: '0.77rem', md: '0.9rem' },
                       color: 'text.primary',
                       fontWeight: 520,
+                      [notebookLandscapeQuery]: {
+                        fontSize: '0.74rem',
+                      },
                     }}
                   >
                     {item}
