@@ -1,4 +1,4 @@
-import { Box, Container, Typography, Button, Stack } from '@mui/material';
+import { Box, Button, Container, Stack, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 
 const floatTransition = {
@@ -8,16 +8,45 @@ const floatTransition = {
   ease: 'easeInOut' as const,
 };
 
+const proofItems = [
+  'Sitios y sistemas a medida',
+  'Diseño claro y profesional',
+  'Acompañamiento cercano',
+];
+
+const heroLeadWords = ['Aquí', 'tus', 'ideas'];
+const heroAccentWords = ['se', 'transforman'];
+
+const staggerContainer = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const riseIn = {
+  hidden: { opacity: 0, y: 26 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.75, ease: 'easeOut' as const },
+  },
+};
+
 const Hero = () => {
   return (
     <Box
       id="inicio"
       sx={{
         minHeight: '100svh',
+        height: { md: '100svh' },
         display: 'flex',
         alignItems: 'center',
-        pt: { xs: '84px', sm: '92px', md: '104px' },
-        pb: { xs: '28px', md: '36px' },
+        pt: { xs: '84px', sm: '92px', md: '112px' },
+        pb: { xs: '28px', md: '20px' },
         background:
           'linear-gradient(135deg, #0b0f13 0%, #141a1f 48%, #1c232a 100%)',
         position: 'relative',
@@ -30,26 +59,33 @@ const Hero = () => {
       }}
     >
       <Box
-        component="video"
+        component={motion.video}
+        initial={{ scale: 1.08, opacity: 0.2 }}
+        animate={{ scale: [1.08, 1.02, 1.08], opacity: 1 }}
+        transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
         autoPlay
         muted
         loop
         playsInline
         preload="metadata"
-        poster="/elingon-ss.png"
+        poster="/elingon.png"
         sx={{
           position: 'absolute',
           inset: 0,
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          objectPosition: { xs: 'center center', md: 'center center' },
-          filter: 'saturate(0.92) contrast(1.08) brightness(0.72)',
+          objectPosition: 'center center',
+          filter: 'saturate(0.94) contrast(1.08) brightness(0.6)',
         }}
       >
         <source src="/video.mp4" type="video/mp4" />
       </Box>
+
       <Box
+        component={motion.div}
+        animate={{ backgroundPosition: ['0px 0px', '64px 32px', '0px 0px'] }}
+        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
         sx={{
           position: 'absolute',
           inset: 0,
@@ -58,10 +94,12 @@ const Hero = () => {
             linear-gradient(90deg, rgba(106, 184, 255, 0.08) 1px, transparent 1px)
           `,
           backgroundSize: '64px 64px',
-          opacity: { xs: 0.28, md: 0.36 },
-          maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.82), transparent 76%)',
+          opacity: { xs: 0.2, md: 0.32 },
+          maskImage:
+            'linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.3) 70%, transparent)',
         }}
       />
+
       <Box
         component={motion.div}
         animate={{ x: [0, 22, -14, 0], y: [0, -18, 16, 0] }}
@@ -73,10 +111,12 @@ const Hero = () => {
           width: { xs: 260, md: 420 },
           height: { xs: 260, md: 420 },
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(106, 184, 255, 0.18), transparent 68%)',
+          background:
+            'radial-gradient(circle, rgba(106, 184, 255, 0.22), transparent 68%)',
           filter: 'blur(8px)',
         }}
       />
+
       <Box
         component={motion.div}
         animate={{ x: [0, -16, 20, 0], y: [0, 20, -12, 0] }}
@@ -88,24 +128,27 @@ const Hero = () => {
           width: { xs: 220, md: 340 },
           height: { xs: 220, md: 340 },
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(246, 198, 91, 0.13), transparent 70%)',
+          background:
+            'radial-gradient(circle, rgba(246, 198, 91, 0.16), transparent 70%)',
           filter: 'blur(10px)',
         }}
       />
+
       <Box
         sx={{
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(180deg, rgba(11, 15, 19, 0.8) 0%, rgba(11, 15, 19, 0.6) 42%, rgba(11, 15, 19, 0.9) 100%)',
+            'linear-gradient(180deg, rgba(11, 15, 19, 0.76) 0%, rgba(11, 15, 19, 0.52) 42%, rgba(11, 15, 19, 0.92) 100%)',
         }}
       />
+
       <Box
         sx={{
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(90deg, rgba(11, 15, 19, 0.9) 0%, rgba(11, 15, 19, 0.52) 46%, rgba(106, 184, 255, 0.14) 100%)',
+            'linear-gradient(90deg, rgba(11, 15, 19, 0.9) 0%, rgba(11, 15, 19, 0.55) 46%, rgba(106, 184, 255, 0.16) 100%)',
         }}
       />
 
@@ -117,19 +160,22 @@ const Hero = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          minHeight: { xs: 'calc(100svh - 112px)', md: 'calc(100svh - 140px)' },
+          px: { xs: 2.25, sm: 3 },
+          minHeight: { xs: 'calc(100svh - 112px)', md: 'calc(100svh - 122px)' },
           '@media (max-height: 860px)': {
-            minHeight: { xs: 'calc(100svh - 100px)', md: 'calc(100svh - 120px)' },
+            minHeight: { xs: 'calc(100svh - 100px)', md: 'calc(100svh - 116px)' },
           },
         }}
       >
         <Stack
-          spacing={{ xs: 2.2, sm: 2.6, md: 3.1 }}
+          spacing={{ xs: 1.9, sm: 2.8, md: 2.4 }}
           alignItems="center"
           textAlign="center"
           sx={{
             width: '100%',
-            maxWidth: 1080,
+            maxWidth: 1100,
+            py: { xs: 0.5, md: 0 },
+            gap: { xs: 1.6, sm: 2.4, md: 2 },
             '@media (max-height: 760px)': {
               transform: 'scale(0.92)',
             },
@@ -146,10 +192,10 @@ const Hero = () => {
             <motion.div animate={{ y: [0, -10, 0] }} transition={floatTransition}>
               <Box
                 component="img"
-                src="/elingon.png"
+                src="/elingon-ss.png"
                 alt="ElinGon Logo"
                 sx={{
-                  width: { xs: 124, sm: 150, md: 180, lg: 190 },
+                  width: { xs: 120, sm: 180, md: 220, lg: 250 },
                   height: 'auto',
                   maxWidth: '100%',
                   objectFit: 'contain',
@@ -157,67 +203,127 @@ const Hero = () => {
                 }}
               />
             </motion.div>
-
-            <Typography
-              variant="overline"
-              sx={{
-                display: 'block',
-                mt: { xs: 1.4, md: 1.8 },
-                color: 'primary.light',
-                fontWeight: 800,
-                fontSize: { xs: '0.72rem', md: '0.78rem' },
-                letterSpacing: '0.16em',
-              }}
-            >
-              Práctico · Profesional · Personalizado
-            </Typography>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.18, ease: 'easeOut' }}
-          >
+          <Box component={motion.div} variants={staggerContainer} initial="hidden" animate="show">
+
+
             <Typography
               variant="h1"
+              component={motion.h1}
+              variants={riseIn}
               sx={{
-                maxWidth: '920px',
+                maxWidth: { xs: 320, sm: 680, md: '980px' },
+                mx: 'auto',
                 color: 'text.primary',
                 fontSize: {
-                  xs: 'clamp(2rem, 10vw, 2.85rem)',
-                  sm: 'clamp(2.8rem, 7vw, 3.8rem)',
-                  md: 'clamp(3.8rem, 5.8vw, 5rem)',
+                  xs: 'clamp(2.05rem, 9.6vw, 2.8rem)',
+                  sm: 'clamp(3rem, 7vw, 4.2rem)',
+                  md: 'clamp(4.15rem, 6vw, 5.5rem)',
                 },
-                lineHeight: { xs: 1.02, md: 0.98 },
+                lineHeight: { xs: 1, md: 0.94 },
+                letterSpacing: '-0.04em',
+                textWrap: 'balance',
               }}
             >
-              Software claro para negocios que quieren{' '}
+              {heroLeadWords.map((word, index) => (
+                <Box
+                  key={word}
+                  component={motion.span}
+                  initial={{ opacity: 0, y: 22, filter: 'blur(8px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={{
+                    duration: 0.55,
+                    delay: 0.36 + index * 0.08,
+                    ease: 'easeOut',
+                  }}
+                  sx={{ display: 'inline-block', mr: { xs: 0.8, md: 1.2 } }}
+                >
+                  {word}
+                </Box>
+              ))}
               <Box
                 component="span"
                 sx={{
-                  color: 'primary.light',
-                  textShadow: '0 0 34px rgba(106, 184, 255, 0.24)',
+                  display: 'block',
+                  backgroundImage:
+                    'linear-gradient(92deg, #ffffff 0%, #dff1ff 34%, #a8d8ff 72%, #00336d 100%)',
+                  backgroundClip: 'text',
+                  color: 'transparent',
+                  textShadow: '0 0 26px rgba(106, 184, 255, 0.18)',
                 }}
               >
-                crecer
+                {heroAccentWords.map((word, index) => (
+                  <Box
+                    key={word}
+                    component={motion.span}
+                    initial={{ opacity: 0, y: 18, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{
+                      duration: 0.55,
+                      delay: 0.62 + index * 0.1,
+                      ease: 'easeOut',
+                    }}
+                    sx={{ display: 'inline-block', mr: { xs: 0.8, md: 1.2 } }}
+                  >
+                    {word}
+                  </Box>
+                ))}
+              </Box>
+              <Box
+                component={motion.span}
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.86, ease: 'easeOut' }}
+                sx={{ display: 'inline-block' }}
+              >
+                en soluciones de software.
               </Box>
             </Typography>
-            <Typography
-              variant="h5"
+
+            <Stack
+              component={motion.div}
+              variants={staggerContainer}
+              direction="row"
+              spacing={1}
+              justifyContent="center"
+              alignItems="center"
               sx={{
-                maxWidth: '720px',
-                mx: 'auto',
-                mt: { xs: 1.1, md: 1.6 },
-                color: 'text.secondary',
-                fontWeight: 360,
-                lineHeight: 1.65,
-                fontSize: { xs: '0.95rem', md: '1.05rem', lg: '1.1rem' },
+                mt: { xs: 1.7, md: 2.4 },
+                flexWrap: 'wrap',
+                rowGap: 1,
               }}
             >
-              Creamos sitios, apps y sistemas a medida con diseño cuidado,
-              código limpio y acompañamiento cercano.
-            </Typography>
-          </motion.div>
+              {proofItems.map((item) => (
+                <Box
+                  component={motion.div}
+                  key={item}
+                  variants={riseIn}
+                  whileHover={{ y: -4, scale: 1.03 }}
+                  transition={floatTransition}
+                  sx={{
+                    px: { xs: 1.25, md: 1.5 },
+                    py: { xs: 0.72, md: 0.8 },
+                    borderRadius: '999px',
+                    border: '1px solid rgba(255,255,255,0.12)',
+                    bgcolor: 'rgba(12, 18, 24, 0.54)',
+                    backdropFilter: 'blur(10px)',
+                    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.06)',
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: { xs: '0.77rem', md: '0.9rem' },
+                      color: 'text.primary',
+                      fontWeight: 520,
+                    }}
+                  >
+                    {item}
+                  </Typography>
+                </Box>
+              ))}
+            </Stack>
+          </Box>
 
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -227,7 +333,12 @@ const Hero = () => {
             <Stack
               direction={{ xs: 'column', sm: 'row' }}
               spacing={2}
-              sx={{ mt: { xs: 0.2, md: 0.4 }, width: { xs: '100%', sm: 'auto' } }}
+              sx={{
+                mt: { xs: 0.6, md: 0.4 },
+                width: { xs: '100%', sm: 'auto' },
+                maxWidth: { xs: 340, sm: 'none' },
+                mx: 'auto',
+              }}
             >
               <Button
                 component={motion.button}
@@ -236,17 +347,23 @@ const Hero = () => {
                 variant="contained"
                 size="large"
                 sx={{
-                  bgcolor: 'primary.main',
+                  bgcolor: 'primary.light',
                   color: '#07100f',
-                  px: 4,
-                  py: 1.6,
-                  minWidth: { xs: '100%', sm: 190 },
+                  px: { xs: 3.2, sm: 4.4 },
+                  py: { xs: 1.35, sm: 1.7 },
+                  minWidth: { xs: '100%', sm: 220 },
+                  boxShadow: '0 18px 40px rgba(106, 184, 255, 0.3)',
+                  borderRadius: '10px',
                   '&:hover': {
-                    bgcolor: 'primary.light',
-                    boxShadow: '0 14px 32px rgba(106, 184, 255, 0.24)',
+                    bgcolor: '#c6e8ff',
+                    boxShadow: '0 20px 40px rgba(106, 184, 255, 0.36)',
                   },
                 }}
-                onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() =>
+                  document
+                    .getElementById('contacto')
+                    ?.scrollIntoView({ behavior: 'smooth' })
+                }
               >
                 Empezar proyecto
               </Button>
@@ -258,22 +375,31 @@ const Hero = () => {
                 variant="outlined"
                 size="large"
                 sx={{
-                  borderColor: 'rgba(255,255,255,0.22)',
+                  borderColor: 'rgba(255,255,255,0.18)',
                   color: 'text.primary',
-                  px: 4,
-                  py: 1.6,
-                  minWidth: { xs: '100%', sm: 170 },
+                  px: { xs: 3.2, sm: 4.2 },
+                  py: { xs: 1.35, sm: 1.7 },
+                  minWidth: { xs: '100%', sm: 190 },
+                  bgcolor: 'rgba(12, 18, 24, 0.35)',
+                  backdropFilter: 'blur(10px)',
+                  borderRadius: '10px',
                   '&:hover': {
                     borderColor: 'secondary.main',
-                    bgcolor: 'rgba(246, 198, 91, 0.08)',
+                    bgcolor: 'rgba(246, 198, 91, 0.1)',
                   },
                 }}
-                onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() =>
+                  document
+                    .getElementById('servicios')
+                    ?.scrollIntoView({ behavior: 'smooth' })
+                }
               >
                 Ver servicios
               </Button>
             </Stack>
           </motion.div>
+
+
           <Box
             component={motion.div}
             animate={{ y: [0, 10, 0], opacity: [0.45, 1, 0.45] }}
@@ -289,7 +415,9 @@ const Hero = () => {
               p: '6px',
             }}
           >
-            <Box sx={{ width: 4, height: 8, borderRadius: 99, bgcolor: 'primary.main' }} />
+            <Box
+              sx={{ width: 4, height: 8, borderRadius: 99, bgcolor: 'primary.main' }}
+            />
           </Box>
         </Stack>
       </Container>

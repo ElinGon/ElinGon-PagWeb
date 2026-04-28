@@ -1,27 +1,38 @@
 import { Box, Container, Typography, Grid, Card, CardContent, Stack, Chip } from '@mui/material';
-import WebIcon from '@mui/icons-material/Web';
-import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
-import DesignServicesIcon from '@mui/icons-material/DesignServices';
+import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+import SettingsSuggestIcon from '@mui/icons-material/SettingsSuggest';
+import StorefrontIcon from '@mui/icons-material/Storefront';
+import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 import { motion } from 'framer-motion';
 
 const services = [
   {
-    icon: <WebIcon sx={{ fontSize: 50 }} />,
-    title: 'Desarrollo Web',
-    description: 'Landing pages, e-commerce y plataformas rápidas, escalables y listas para convertir.',
-    tag: 'Web',
+    icon: <RocketLaunchIcon sx={{ fontSize: 50 }} />,
+    title: 'Landing Pages',
+    description:
+      'Diseñamos páginas profesionales que presentan tu empresa con seriedad y confianza, mostrando servicios, precios e información clave para atraer clientes y fortalecer tu presencia digital.',
+    tag: 'Conversión',
   },
   {
-    icon: <PhoneAndroidIcon sx={{ fontSize: 50 }} />,
-    title: 'Apps Móviles',
-    description: 'Experiencias móviles fluidas para Android y iOS, pensadas para uso real diario.',
-    tag: 'Mobile',
+    icon: <SettingsSuggestIcon sx={{ fontSize: 50 }} />,
+    title: 'Sistemas Personalizados',
+    description:
+      'Desarrollamos soluciones tecnológicas a medida según las necesidades de cada negocio, automatizando procesos, mejorando la productividad y adaptándonos a objetivos específicos.',
+    tag: 'A Medida',
   },
   {
-    icon: <DesignServicesIcon sx={{ fontSize: 50 }} />,
-    title: 'Sistemas a medida',
-    description: 'Paneles, automatizaciones y herramientas internas que ordenan procesos del negocio.',
-    tag: 'Software',
+    icon: <StorefrontIcon sx={{ fontSize: 50 }} />,
+    title: 'Tiendas Ecommerce',
+    description:
+      'Creamos tiendas online profesionales, seguras y escalables para vender productos o servicios en internet, con integración de pagos, gestión de inventario y experiencia de usuario optimizada.',
+    tag: 'Ecommerce',
+  },
+  {
+    icon: <AutoGraphIcon sx={{ fontSize: 50 }} />,
+    title: 'Automatización de Procesos',
+    description:
+      'Implementamos herramientas digitales que reducen tareas manuales, optimizan operaciones y mejoran la eficiencia empresarial mediante automatizaciones inteligentes.',
+    tag: 'Automatización',
   },
 ];
 
@@ -148,7 +159,7 @@ const Services = () => {
 
           <Grid container spacing={{ xs: 3, xl: 4 }}>
             {services.map((service, index) => (
-              <Grid key={index} size={{ xs: 12, md: 4 }} sx={{ display: 'flex' }}>
+              <Grid key={index} size={{ xs: 12, sm: 6, lg: 3 }} sx={{ display: 'flex' }}>
                 <motion.div
                   variants={cardVariants}
                   initial="hidden"
@@ -166,8 +177,10 @@ const Services = () => {
                       position: 'relative',
                       overflow: 'hidden',
                       display: 'flex',
-                      background: 'rgba(23, 28, 33, 0.92)',
-                      border: '1px solid rgba(202, 205, 208, 0.12)',
+                      background: 'rgba(20, 26, 31, 0.45)',
+                      backdropFilter: 'blur(32px)',
+                      border: '1px solid rgba(106, 184, 255, 0.15)',
+                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
                       transition: 'border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease',
                       '&:before': {
                         content: '""',

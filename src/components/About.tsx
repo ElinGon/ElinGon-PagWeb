@@ -1,6 +1,6 @@
 import { Box, Container, Typography, Grid, Stack, Paper } from '@mui/material';
 import GroupsIcon from '@mui/icons-material/Groups';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import WorkIcon from '@mui/icons-material/Work';
 import { motion } from 'framer-motion';
 
@@ -8,9 +8,9 @@ const notebookLandscapeQuery =
   '@media (min-width: 1024px) and (max-width: 1600px) and (max-height: 950px)';
 
 const stats = [
-  { icon: <WorkIcon sx={{ fontSize: 40 }} />, number: '150+', label: 'Proyectos Completados' },
-  { icon: <GroupsIcon sx={{ fontSize: 40 }} />, number: '50+', label: 'Clientes Satisfechos' },
-  { icon: <EmojiEventsIcon sx={{ fontSize: 40 }} />, number: '10+', label: 'Años de Experiencia' },
+  { icon: <WorkIcon sx={{ fontSize: 40 }} />, number: '20+', label: 'Clientes Operando Actualmente' },
+  { icon: <GroupsIcon sx={{ fontSize: 40 }} />, number: '+ 4', label: 'Años de experiencia' },
+  { icon: <SupportAgentIcon sx={{ fontSize: 40 }} />, number: '', label: 'Soporte Constante\nAtención cercana y personalizada' },
 ];
 
 const About = () => {
@@ -73,7 +73,7 @@ const About = () => {
                   },
                 }}
               >
-                Cercanía de estudio, calidad de software serio
+                Impulsamos negocios con soluciones digitales.
               </Typography>
               <Typography
                 variant="body1"
@@ -86,8 +86,7 @@ const About = () => {
                   },
                 }}
               >
-                Somos un equipo apasionado de desarrolladores, diseñadores y estrategas
-                digitales comprometidos con la excelencia tecnológica.
+                Somos un equipo apasionado por el desarrollo digital, enfocado en brindar soluciones modernas, funcionales y adaptadas a cada cliente. Nos especializamos en crear landing pages, sistemas personalizados, ecommerce y herramientas digitales que impulsan negocios reales.
               </Typography>
               <Typography
                 variant="body1"
@@ -100,9 +99,7 @@ const About = () => {
                   },
                 }}
               >
-                Desde 2014, hemos ayudado a empresas de todos los tamaños a transformar
-                sus ideas en soluciones digitales exitosas. Nuestra experiencia abarca
-                desde startups hasta grandes corporaciones.
+                Nuestro compromiso va más allá del desarrollo: buscamos construir relaciones sólidas con cada cliente, ofreciendo soporte constante, atención personalizada y acompañamiento en cada etapa del proceso.
               </Typography>
               <Typography
                 variant="body1"
@@ -115,8 +112,7 @@ const About = () => {
                   },
                 }}
               >
-                Creemos en la innovación constante, la calidad del código y en construir
-                relaciones duraderas con nuestros clientes.
+                Creemos que la confianza, la comunicación y la disponibilidad son claves para lograr resultados exitosos y duraderos.
               </Typography>
             </Stack>
           </Grid>
@@ -137,8 +133,10 @@ const About = () => {
                       display: 'flex',
                       alignItems: 'center',
                       gap: 2.5,
-                      background: 'rgba(23, 28, 33, 0.9)',
-                      border: '1px solid rgba(202, 205, 208, 0.12)',
+                      background: 'rgba(20, 26, 31, 0.45)',
+                      backdropFilter: 'blur(32px)',
+                      border: '1px solid rgba(106, 184, 255, 0.15)',
+                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
                       transition: 'border-color 0.3s, transform 0.3s',
                       '&:hover': {
                         borderColor: 'rgba(246, 198, 91, 0.42)',
@@ -152,24 +150,27 @@ const About = () => {
                       {stat.icon}
                     </Box>
                     <Box>
-                      <Typography
-                        variant="h3"
-                        color="text.primary"
-                        fontWeight={750}
-                        sx={{
-                          fontSize: { xl: '4rem' },
-                          [notebookLandscapeQuery]: {
-                            fontSize: '2.6rem',
-                          },
-                        }}
-                      >
-                        {stat.number}
-                      </Typography>
+                      {stat.number && (
+                        <Typography
+                          variant="h3"
+                          color="text.primary"
+                          fontWeight={750}
+                          sx={{
+                            fontSize: { xl: '4rem' },
+                            [notebookLandscapeQuery]: {
+                              fontSize: '2.6rem',
+                            },
+                          }}
+                        >
+                          {stat.number}
+                        </Typography>
+                      )}
                       <Typography
                         variant="body1"
                         color="text.secondary"
                         sx={{
                           fontSize: { xl: '1.18rem' },
+                          whiteSpace: 'pre-line',
                           [notebookLandscapeQuery]: {
                             fontSize: '0.98rem',
                           },

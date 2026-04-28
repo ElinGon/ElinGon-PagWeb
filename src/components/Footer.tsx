@@ -21,10 +21,12 @@ const Footer = () => {
   return (
     <Box
       sx={{
-        background: "#0b0f13",
+        background: 'rgba(11, 15, 19, 0.45)',
+        backdropFilter: 'blur(32px)',
         color: "white",
         py: 6,
-        borderTop: "1px solid rgba(255,255,255,0.08)",
+        borderTop: '1px solid rgba(106, 184, 255, 0.15)',
+        boxShadow: '0 -8px 32px rgba(0, 0, 0, 0.2)',
       }}
     >
       <Container maxWidth="lg">

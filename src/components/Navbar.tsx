@@ -75,9 +75,10 @@ const Navbar = () => {
       position="fixed"
       elevation={0}
       sx={{
-        background: 'rgba(8, 11, 13, 0.74)',
-        backdropFilter: 'blur(18px)',
-        borderBottom: '1px solid rgba(202, 205, 208, 0.12)',
+        background: 'rgba(20, 26, 31, 0.45)',
+        backdropFilter: 'blur(32px)',
+        borderBottom: '1px solid rgba(106, 184, 255, 0.15)',
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
       }}
     >
       <Container maxWidth="lg">

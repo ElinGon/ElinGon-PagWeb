@@ -4,6 +4,7 @@ import Services from '../components/Services';
 import About from '../components/About';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import FloatingWhatsApp from '../components/FloatingWhatsApp';
 
 const Home = () => {
   return (
@@ -14,7 +15,7 @@ const Home = () => {
       <About />
       <Contact />
       <Footer />
-      
+      <FloatingWhatsApp />
     </>
   );
 };
